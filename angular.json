@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "firstPage": {
+    "compilacion-despliegues": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -85,13 +85,13 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "firstPage:build:production"
+              "buildTarget": "compilacion-despliegues:build:production"
             },
             "development": {
-              "buildTarget": "firstPage:build:development"
+              "buildTarget": "compilacion-despliegues:build:development"
             },
             "fpatino": {
-              "buildTarget": "firstPage:build:fpatino"
+              "buildTarget": "compilacion-despliegues:build:fpatino"
             }
           },
           "defaultConfiguration": "development"

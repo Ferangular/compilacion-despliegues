@@ -1,5 +1,5 @@
-﻿{
-  "appName": "FirstPage",
+{
+  "appName": "Compilación y Despliegues",
   "environmentName": "FPatino Local",
   "apiUrl": "http://localhost:3000/api",
   "debug": true,

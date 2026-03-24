@@ -1,5 +1,5 @@
-﻿{
-  "appName": "FirstPage",
+{
+  "appName": "Compilación y Despliegues",
   "environmentName": "Producción",
   "apiUrl": "https://api.miproyecto.com/api",
   "debug": false,

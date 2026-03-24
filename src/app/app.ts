@@ -9,7 +9,7 @@ import { AppSettingsService } from './core/services/app-settings.service';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('firstPage');
+  protected readonly title = signal('compilacion-despliegues');
   environment = environment;
   appSettingsService = inject(AppSettingsService);
 
