@@ -1,0 +1,16 @@
+﻿{
+  "appName": "FirstPage",
+  "environmentName": "FPatino Local",
+  "apiUrl": "http://localhost:3000/api",
+  "debug": true,
+  "logo": "assets/icons/logo-dev.svg",
+  "theme": {
+    "primary": "#6a1b9a",
+    "secondary": "#ab47bc",
+    "accent": "#e1bee7"
+  },
+  "ui": {
+    "showEnvironmentBadge": true,
+    "showDebugPanel": true
+  }
+}

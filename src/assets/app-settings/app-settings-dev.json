@@ -1,0 +1,16 @@
+﻿{
+  "appName": "FirstPage",
+  "environmentName": "Desarrollo",
+  "apiUrl": "http://localhost:3000/api",
+  "debug": true,
+  "logo": "assets/icons/logo-dev.svg",
+  "theme": {
+    "primary": "#1565c0",
+    "secondary": "#42a5f5",
+    "accent": "#90caf9"
+  },
+  "ui": {
+    "showEnvironmentBadge": true,
+    "showDebugPanel": true
+  }
+}

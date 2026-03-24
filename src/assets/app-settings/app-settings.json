@@ -1,0 +1,16 @@
+﻿{
+  "appName": "FirstPage",
+  "environmentName": "Producción",
+  "apiUrl": "https://api.miproyecto.com/api",
+  "debug": false,
+  "logo": "assets/icons/logo-prod.svg",
+  "theme": {
+    "primary": "#2e7d32",
+    "secondary": "#66bb6a",
+    "accent": "#c8e6c9"
+  },
+  "ui": {
+    "showEnvironmentBadge": true,
+    "showDebugPanel": false
+  }
+}
