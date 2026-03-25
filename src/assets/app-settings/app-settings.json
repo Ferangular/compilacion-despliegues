@@ -2,7 +2,7 @@
   "appName": "Compilación y Despliegues",
   "environmentName": "Producción",
   "apiUrl": "https://api.miproyecto.com/api",
-  "debug": false,
+  "debug": true,
   "logo": "assets/icons/logo-prod.svg",
   "theme": {
     "primary": "#2e7d32",
@@ -11,6 +11,6 @@
   },
   "ui": {
     "showEnvironmentBadge": true,
-    "showDebugPanel": false
+    "showDebugPanel": true
   }
 }
