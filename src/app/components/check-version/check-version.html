@@ -1,0 +1,39 @@
+<div class="page" [style.background]="accentColor">
+  <div class="card" [style.border-color]="primaryColor">
+    <img [src]="logo" alt="Logo entorno" class="logo" />
+
+    <h1 [style.color]="primaryColor">{{ appName }}</h1>
+
+    @if (showEnvironmentBadge) {
+      <p class="badge" [style.background]="secondaryColor">Entorno: {{ environmentName }}</p>
+    }
+
+    <p>
+      <strong>Producción:</strong>
+      {{ environment.production }}
+    </p>
+    <p>
+      <strong>API URL:</strong>
+      {{ apiUrl }}
+    </p>
+    <p>
+      <strong>Debug:</strong>
+      {{ debug }}
+    </p>
+
+    @if (showDebugPanel) {
+  <div class="debug-box" [style.border-color]="secondaryColor">
+    <p>✅ Panel debug visible </p>
+    <p>Color primario: {{ primaryColor }}</p>
+    <p>Color secundario: {{ secondaryColor }}</p>
+    <p>Color acento: {{ accentColor }}</p>
+  </div>
+} @else {
+  <div class="debug-box" style="border-color: red; background: #ffebee;">
+    <p>❌ Panel debug NO visible</p>
+    <p>showDebugPanel value: {{ showDebugPanel }}</p>
+    <p>Settings: {{ settings | json }}</p>
+  </div>
+}
+  </div>
+</div>

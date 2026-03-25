@@ -1,59 +1,13 @@
-import { Component, inject, signal } from '@angular/core';
-import { environment } from '../environments/environment';
-import { AppSettingsService } from './core/services/app-settings.service';
+import { Component, signal } from '@angular/core';
+import { CheckVersion } from './components/check-version/check-version';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [CheckVersion],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('compilacion-despliegues');
-  environment = environment;
-  appSettingsService = inject(AppSettingsService);
+  protected readonly title = signal('Compilación & Despliegues');
 
-  get settings() {
-    return this.appSettingsService.config;
-  }
-
-  get apiUrl(): string {
-    return this.settings?.apiUrl ?? '';
-  }
-
-  get debug(): boolean {
-    return this.settings?.debug ?? false;
-  }
-
-  get appName(): string {
-    return this.settings?.appName ?? '';
-  }
-
-  get environmentName(): string {
-    return this.settings?.environmentName ?? '';
-  }
-
-  get logo(): string {
-    return this.settings?.logo ?? '';
-  }
-
-  get primaryColor(): string {
-    return this.settings?.theme?.primary ?? '#1976d2';
-  }
-
-  get secondaryColor(): string {
-    return this.settings?.theme?.secondary ?? '#42a5f5';
-  }
-
-  get accentColor(): string {
-    return this.settings?.theme?.accent ?? '#90caf9';
-  }
-
-  get showEnvironmentBadge(): boolean {
-    return this.settings?.ui?.showEnvironmentBadge ?? false;
-  }
-
-  get showDebugPanel(): boolean {
-    return this.settings?.ui?.showDebugPanel ?? false;
-  }
 }

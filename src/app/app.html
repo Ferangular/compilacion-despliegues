@@ -1,33 +1,71 @@
-<div class="page" [style.background]="accentColor">
-  <div class="card" [style.border-color]="primaryColor">
-    <img [src]="logo" alt="Logo entorno" class="logo" />
-
-    <h1 [style.color]="primaryColor">{{ appName }}</h1>
-
-    @if (showEnvironmentBadge) {
-      <p class="badge" [style.background]="secondaryColor">Entorno: {{ environmentName }}</p>
-    }
-
-    <p>
-      <strong>Producción:</strong>
-      {{ environment.production }}
-    </p>
-    <p>
-      <strong>API URL:</strong>
-      {{ apiUrl }}
-    </p>
-    <p>
-      <strong>Debug:</strong>
-      {{ debug }}
-    </p>
-
-    @if (showDebugPanel) {
-      <div class="debug-box" [style.border-color]="secondaryColor">
-        <p>Panel debug visible</p>
-        <p>Color primario: {{ primaryColor }}</p>
-        <p>Color secundario: {{ secondaryColor }}</p>
-        <p>Color acento: {{ accentColor }}</p>
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <h1>{{ title() }}</h1>
       </div>
-    }
+      <div class="nav-menu">
+        <a href="#home" class="nav-link">Inicio</a>
+        <a href="#features" class="nav-link">Características</a>
+        <a href="#contact" class="nav-link">Contacto</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="main-content">
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2 class="hero-title">Bienvenido a tu Aplicación</h2>
+      <p class="hero-subtitle">Una solución moderna y profesional para tus necesidades</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary">Comenzar</button>
+        <button class="btn btn-secondary">Más información</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card">
+        <app-check-version></app-check-version>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title">Características Principales</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3>Rendimiento</h3>
+          <p>Optimizado para ofrecer la mejor experiencia de usuario</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Diseño Moderno</h3>
+          <p>Interfaz elegante y responsiva con las últimas tendencias</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3>Fácil Configuración</h3>
+          <p>Despliegue sencillo y configuración intuitiva</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Contacto</h2>
+      <div class="contact-content">
+        <p>¿Tienes preguntas? Estamos aquí para ayudarte.</p>
+        <button class="btn btn-primary">Contactar</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2024 {{ title() }}. Todos los derechos reservados.</p>
   </div>
-</div>
+</footer>
