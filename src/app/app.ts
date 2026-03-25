@@ -1,10 +1,9 @@
 import { Component, signal, inject, OnInit } from '@angular/core';
-import { JsonPipe } from '@angular/common';
 import { AppSettingsService } from './core/services/app-settings.service';
 
 @Component({
   selector: 'app-root',
-  imports: [JsonPipe],
+  imports: [],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
