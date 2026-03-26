@@ -1,1 +1,92 @@
-{}
+{
+  "nav": {
+    "links": {
+      "home": "Inicio",
+      "features": "Características",
+      "hosting": "Hosting",
+      "contact": "Contacto"
+    },
+    "environments": {
+      "default": "Por Defecto",
+      "dev": "Desarrollo",
+      "prod": "Producción",
+      "fpatino": "FPatino"
+    }
+  },
+  "hero": {
+    "title": "Firebase Hosting Demo",
+    "subtitle": "Despliega tu aplicación Angular en segundos",
+    "description": "Aprovecha el poder de Firebase Hosting para despliegues rápidos y automáticos con CI/CD",
+    "stats": {
+      "deployments": {
+        "number": "99.9%",
+        "label": "Uptime"
+      },
+      "speed": {
+        "number": "< 1s",
+        "label": "Tiempo de Carga"
+      },
+      "ssl": {
+        "number": "Gratis",
+        "label": "SSL Certificate"
+      }
+    },
+    "actions": {
+      "deploy": "Despliegue Ahora",
+      "docs": "Ver Documentación"
+    }
+  },
+  "features": {
+    "title": "Características Principales",
+    "subtitle": "Descubre las funcionalidades que hacen de Firebase Hosting la mejor opción",
+    "items": {
+      "performance": {
+        "title": "Rendimiento Ultra Rápido",
+        "description": "CDN global y compresión automática para máxima velocidad",
+        "tech": ["CDN", "Cache", "Compression"]
+      },
+      "ssl": {
+        "title": "SSL Gratuito",
+        "description": "Certificados SSL automáticos y renovación sin esfuerzo",
+        "tech": ["HTTPS", "Auto-Renew", "Security"]
+      },
+      "scalability": {
+        "title": "Escalabilidad Infinita",
+        "description": "Soporte para millones de usuarios sin configuración adicional",
+        "tech": ["Auto-Scale", "Load Balancer", "Global"]
+      }
+    }
+  },
+  "contact": {
+    "title": "¿Listo para empezar?",
+    "subtitle": "Únete a miles de desarrolladores que confían en Firebase Hosting",
+    "actions": {
+      "start": "Comenzar Gratis",
+      "contact": "Contactar Soporte"
+    },
+    "info": "¿Necesitas ayuda? "
+  },
+  "footer": {
+    "brand": {
+      "title": "Firebase Hosting Demo",
+      "description": "Plataforma de despliegue moderno para aplicaciones web"
+    },
+    "links": {
+      "product": {
+        "title": "Producto",
+        "items": ["Características", "Hosting", "Precios"]
+      },
+      "resources": {
+        "title": "Recursos",
+        "items": ["Documentación", "Blog", "Soporte"]
+      },
+      "company": {
+        "title": "Empresa",
+        "items": ["Acerca de", "Carreras", "Contacto"]
+      }
+    },
+    "bottom": {
+      "copyright": "2024 Firebase Hosting Demo. Todos los derechos reservados."
+    }
+  }
+}

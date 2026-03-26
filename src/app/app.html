@@ -1,0 +1,22 @@
+<!-- Main App Container -->
+<app-navbar
+  [brand]="appName()"
+  [links]="navbarLinks"
+  [environmentOptions]="environmentOptions"
+  [showEnvironmentBadge]="showEnvironmentBadge()"
+  [environmentName]="environmentName()"
+  [activeLanguage]="activeLang()"
+  (environmentChange)="onEnvironmentChange($event)"
+  (languageChange)="onLanguageChange($event)"
+/>
+
+<!-- Router Outlet para cargar componentes dinámicamente -->
+<router-outlet></router-outlet>
+
+<app-footer
+  [brandTitle]="footerData.brandTitle"
+  [brandDescription]="footerData.brandDescription"
+  [copyright]="footerData.copyright"
+  [linkGroups]="footerData.linkGroups"
+  [showSocial]="true"
+/>
