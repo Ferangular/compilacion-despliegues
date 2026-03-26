@@ -1,4 +1,5 @@
-import { Component, signal, input } from '@angular/core';
+import { Component, signal, input, output } from '@angular/core';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 
 export interface NavbarLink {
@@ -13,7 +14,7 @@ export interface EnvironmentOption {
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [TranslocoPipe],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -37,23 +38,23 @@ export class NavbarComponent {
   readonly activeLanguage = input<string>('es');
 
   // Outputs para eventos usando output()
-  // readonly environmentChange = output<string>();
-  // readonly languageChange = output<string>();
+  readonly environmentChange = output<string>();
+  readonly languageChange = output<string>();
 
   // Signals internos para estado
   protected readonly isMobileMenuOpen = signal(false);
 
   // Métodos públicos
   public onEnvironmentSelect(event: Event): void {
-    // const select = event.target as HTMLSelectElement;
-    // this.environmentChange.emit(select.value);
+    const select = event.target as HTMLSelectElement;
+    this.environmentChange.emit(select.value);
   }
 
   public onLanguageSelect(event: Event): void {
     const select = event.target as HTMLSelectElement;
     const lang = select.value;
     console.log('Navbar: Emitiendo cambio de idioma:', lang); // Debug
-    // this.languageChange.emit(lang);
+    this.languageChange.emit(lang);
   }
 
   public onKeyup(event: KeyboardEvent): void {
