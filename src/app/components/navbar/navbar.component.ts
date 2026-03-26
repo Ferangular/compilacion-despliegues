@@ -14,7 +14,7 @@ export interface EnvironmentOption {
 
 @Component({
   selector: 'app-navbar',
-  imports: [TranslocoPipe],
+  imports: [],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })

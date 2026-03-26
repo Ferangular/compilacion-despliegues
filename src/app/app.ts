@@ -96,17 +96,14 @@ export class App {
     this.activeLang.set(currentLang);
   }
 
-  public onLanguageChange(event: Event): void {
-    const select = event.target as HTMLSelectElement;
-    const lang = select.value;
-    console.log('Cambiando idioma a:', lang); // Debug
-    this.translocoService.setActiveLang(lang);
+  public onLanguageChange(value: string): void {
+    console.log('Cambiando idioma a:', value); // Debug
+    this.translocoService.setActiveLang(value);
   }
 
-  public onEnvironmentChange(event: Event): void {
-    const select = event.target as HTMLSelectElement;
-    const env = select.value;
-    this.applyEnvironment(env);
+  public onEnvironmentChange(value: string): void {
+    console.log('Cambiando entorno a:', value); // Debug
+    this.applyEnvironment(value);
   }
 
   private applyEnvironment(env: string): void {
