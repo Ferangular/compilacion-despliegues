@@ -1,15 +1,10 @@
-# Configuración de Netlify para Angular
+# Configuración mínima para Netlify
 [build]
-  # Comando de build para producción (usando npx)
-  command = "npx ng build --configuration production"
-  # Directorio de salida de Angular (ruta correcta)
+  command = "npm run build"
   publish = "dist/compilacion-despliegues/browser"
 
 [build.environment]
   NODE_VERSION = "20"
-  NPM_VERSION = "10"
-  NODE_ENV = "production"
-  NPM_CONFIG_IGNORE_SCRIPTS = "true"
 
 # Redirecciones para Single Page Application (SPA)
 [[redirects]]

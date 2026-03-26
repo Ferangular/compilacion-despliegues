@@ -6,7 +6,7 @@
     "start": "ng serve",
     "fpatino": "ng serve --host 0.0.0.0 --port 4500 --open --configuration fpatino",
     "dev": "ng serve --open",
-    "build": "npx ng build --configuration production",
+    "build": "ng build --configuration production",
     "build:prod": "ng build --configuration production",
     "build:netlify": "ng build --configuration production --output-path=dist",
     "analyze": "ng build --configuration production --stats-json && npx esbuild-visualizer --metadata dist/compilacion-despliegues/stats.json --open",
