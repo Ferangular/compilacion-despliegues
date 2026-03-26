@@ -8,6 +8,8 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_VERSION = "10"
+  NODE_ENV = "production"
+  NPM_CONFIG_IGNORE_SCRIPTS = "true"
 
 # Redirecciones para Single Page Application (SPA)
 [[redirects]]
