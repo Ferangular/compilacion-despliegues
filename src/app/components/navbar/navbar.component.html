@@ -9,22 +9,13 @@
       </div>
       <span class="brand-text">{{ brand() }}</span>
     </div>
-
-    <!-- Environment Badge -->
-    @if (showEnvironmentBadge()) {
-      <div class="environment-badge">
-        <span class="badge-text">{{ environmentName() }}</span>
-      </div>
-    }
-
-    <!-- Environment Selector -->
-    <div class="environment-selector">
-      <select (change)="onEnvironmentSelect($event)" class="env-select">
-        @for (option of environmentOptions(); track option.value) {
-          <option [value]="option.value">{{ option.label }}</option>
-        }
-      </select>
+    <!-- Navigation Menu -->
+    <div class="nav-menu" [class.active]="isMobileMenuOpen()">
+      @for (link of links(); track link.href) {
+        <a href="{{ link.href }}" class="nav-link" (click)="closeMobileMenu()">{{ link.text }}</a>
+      }
     </div>
+
 
     <!-- Language Selector -->
     <div class="language-selector">
@@ -34,17 +25,10 @@
       </select>
     </div>
 
-    <!-- Navigation Menu -->
-    <div class="nav-menu" [class.active]="isMobileMenuOpen()">
-      @for (link of links(); track link.href) {
-        <a href="{{ link.href }}" class="nav-link" (click)="closeMobileMenu()">{{ link.text }}</a>
-      }
-    </div>
-
     <!-- Mobile Menu Toggle -->
-    <button 
-      class="nav-toggle" 
-      [class.active]="isMobileMenuOpen()" 
+    <button
+      class="nav-toggle"
+      [class.active]="isMobileMenuOpen()"
       (click)="toggleMobileMenu()"
       (keyup)="onKeyup($event)"
       [attr.aria-expanded]="isMobileMenuOpen()"
