@@ -1,7 +1,7 @@
 # Configuración de Netlify para Angular
 [build]
-  # Comando de build para producción
-  command = "npm run build"
+  # Comando de build para producción (usando npx)
+  command = "npx ng build --configuration production"
   # Directorio de salida de Angular (ruta correcta)
   publish = "dist/compilacion-despliegues/browser"
 
