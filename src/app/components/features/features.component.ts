@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { TranslocoPipe } from '@jsverse/transloco';
+
 
 export interface FeatureItem {
   title: string;
@@ -10,7 +10,7 @@ export interface FeatureItem {
 
 @Component({
   selector: 'app-features',
-  imports: [TranslocoPipe],
+  imports: [],
   templateUrl: './features.component.html',
   styleUrl: './features.component.scss'
 })

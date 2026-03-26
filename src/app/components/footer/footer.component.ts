@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { TranslocoPipe } from '@jsverse/transloco';
+
 
 export interface FooterLink {
   text: string;
@@ -13,7 +13,7 @@ export interface FooterLinkGroup {
 
 @Component({
   selector: 'app-footer',
-  imports: [TranslocoPipe],
+  imports: [],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })

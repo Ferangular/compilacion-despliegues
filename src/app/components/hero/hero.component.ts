@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { TranslocoPipe } from '@jsverse/transloco';
+
 
 export interface HeroStats {
   number: string;
@@ -14,7 +14,7 @@ export interface HeroAction {
 
 @Component({
   selector: 'app-hero',
-  imports: [TranslocoPipe],
+  imports: [],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })
