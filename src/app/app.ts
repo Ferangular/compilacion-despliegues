@@ -86,10 +86,9 @@ export class App {
   private initializeLanguage(): void {
     // Escuchar cambios de idioma
     this.translocoService.langChanges$.subscribe(lang => {
-      console.log('Idioma cambiado a:', lang); // Debug
       this.activeLang.set(lang);
     });
-    
+
     // Establecer idioma inicial
     const currentLang = this.translocoService.getActiveLang();
     console.log('Idioma actual:', currentLang); // Debug
@@ -97,12 +96,12 @@ export class App {
   }
 
   public onLanguageChange(value: string): void {
-    console.log('Cambiando idioma a:', value); // Debug
+
     this.translocoService.setActiveLang(value);
   }
 
   public onEnvironmentChange(value: string): void {
-    console.log('Cambiando entorno a:', value); // Debug
+
     this.applyEnvironment(value);
   }
 
