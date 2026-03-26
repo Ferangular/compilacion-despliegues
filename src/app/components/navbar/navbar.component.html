@@ -1,0 +1,59 @@
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-brand">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="brand-text">{{ brand() }}</span>
+    </div>
+
+    <!-- Environment Badge -->
+    @if (showEnvironmentBadge()) {
+      <div class="environment-badge">
+        <span class="badge-text">{{ environmentName() }}</span>
+      </div>
+    }
+
+    <!-- Environment Selector -->
+    <div class="environment-selector">
+      <select (change)="onEnvironmentSelect($event)" class="env-select">
+        @for (option of environmentOptions(); track option.value) {
+          <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+      <select (change)="onLanguageSelect($event)" class="lang-select" [value]="activeLanguage()">
+        <option value="es">🇪🇸 ES</option>
+        <option value="en">🇬🇧 EN</option>
+      </select>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="nav-menu" [class.active]="isMobileMenuOpen()">
+      @for (link of links(); track link.href) {
+        <a href="{{ link.href }}" class="nav-link" (click)="closeMobileMenu()">{{ link.text }}</a>
+      }
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button 
+      class="nav-toggle" 
+      [class.active]="isMobileMenuOpen()" 
+      (click)="toggleMobileMenu()"
+      (keyup)="onKeyup($event)"
+      [attr.aria-expanded]="isMobileMenuOpen()"
+      [attr.aria-label]="isMobileMenuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+      type="button"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>

@@ -1,1 +1,136 @@
-{}
+{
+  "nav": {
+    "brand": "Práctica curso Firebase Hosting",
+    "links": {
+      "home": "Inicio",
+      "features": "Características",
+      "hosting": "Hosting",
+      "contact": "Contacto"
+    },
+    "environments": {
+      "default": "Firebase",
+      "dev": "Desarrollo",
+      "prod": "Producción",
+      "fpatino": "FPatino"
+    }
+  },
+  "hero": {
+    "title": "Práctica curso Firebase Hosting",
+    "subtitle": "Demo Profesional",
+    "description": "Despliega aplicaciones Angular modernas con Firebase Hosting. Rendimiento superior, SSL gratuito y despliegue instantáneo.",
+    "stats": {
+      "deployments": {
+        "number": "100%",
+        "label": "Uptime"
+      },
+      "speed": {
+        "number": "99.9%",
+        "label": "Rendimiento"
+      },
+      "ssl": {
+        "number": "∞",
+        "label": "SSL Gratis"
+      }
+    },
+    "actions": {
+      "deploy": "Desplegar Ahora",
+      "docs": "Ver Documentación"
+    }
+  },
+  "features": {
+    "title": "Características Principales",
+    "subtitle": "Todo lo que necesitas para despliegues profesionales",
+    "items": {
+      "performance": {
+        "title": "Rendimiento Superior",
+        "description": "CDN global con caché inteligente para tiempos de carga mínimos.",
+        "tech": ["CDN", "Cache", "HTTP/2"]
+      },
+      "security": {
+        "title": "Seguridad Integrada",
+        "description": "SSL gratuito, firewall y protección contra ataques DDoS.",
+        "tech": ["SSL", "Firewall", "DDoS"]
+      },
+      "scalability": {
+        "title": "Escalabilidad Infinita",
+        "description": "Escala automáticamente con el tráfico de tu aplicación.",
+        "tech": ["Auto-scaling", "Load Balancer", "Global"]
+      }
+    }
+  },
+  "hosting": {
+    "title": "Hosting Profesional",
+    "subtitle": "Despliega tu aplicación Angular en minutos con nuestra configuración optimizada.",
+    "steps": {
+      "step1": {
+        "title": "Configura tu proyecto",
+        "description": "Instala Firebase CLI y ejecuta <code>firebase init</code> para configurar tu proyecto."
+      },
+      "step2": {
+        "title": "Build tu aplicación",
+        "description": "Usa <code>npm run build:firebase</code> para generar los archivos de producción."
+      },
+      "step3": {
+        "title": "Despliega a Firebase",
+        "description": "Ejecuta <code>firebase deploy</code> y tu aplicación estará en línea instantáneamente."
+      }
+    },
+    "visual": {
+      "title": "firebase.json",
+      "tabs": {
+        "firebase": "firebase.json",
+        "package": "package.json",
+        "angular": "angular.json"
+      }
+    }
+  },
+  "contact": {
+    "title": "¿Listo para Empezar?",
+    "subtitle": "Comienza a desplegar tus aplicaciones Angular hoy mismo",
+    "actions": {
+      "start": "Comenzar Gratis",
+      "contact": "Contactar Soporte"
+    },
+    "info": "¿Necesitas ayuda? Envíanos un email a"
+  },
+  "footer": {
+    "brand": {
+      "title": "Firebase Demo",
+      "description": "Plataforma de despliegue profesional para aplicaciones Angular modernas."
+    },
+    "links": {
+      "product": {
+        "title": "Producto",
+        "items": ["Características", "Precios", "Documentación"]
+      },
+      "company": {
+        "title": "Empresa",
+        "items": ["Sobre Nosotros", "Blog", "Carreras"]
+      },
+      "support": {
+        "title": "Soporte",
+        "items": ["Ayuda", "Contacto", "Estado"]
+      }
+    },
+    "bottom": {
+      "copyright": "© 2024 Firebase Demo. Todos los derechos reservados.",
+      "social": "Síguenos en"
+    }
+  },
+  "terminal": {
+    "lines": [
+      {
+        "type": "command",
+        "text": "firebase deploy"
+      },
+      {
+        "type": "output",
+        "text": "i Deploying to..."
+      },
+      {
+        "type": "success",
+        "text": "✔ Deploy complete!"
+      }
+    ]
+  }
+}

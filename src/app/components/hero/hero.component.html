@@ -1,0 +1,74 @@
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="hero-background">
+    <div class="hero-particles"></div>
+    <div class="hero-gradient"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="gradient-text">{{ title() }}</span>
+          <br>
+          <span class="gradient-text">{{ subtitle() }}</span>
+        </h1>
+        <p class="hero-subtitle">
+          {{ description() }}
+        </p>
+        <div class="hero-stats">
+          @for (stat of stats(); track stat.label) {
+            <div class="stat">
+              <span class="stat-number">{{ stat.number }}</span>
+              <span class="stat-label">{{ stat.label }}</span>
+            </div>
+          }
+        </div>
+        <div class="hero-actions">
+          @for (action of actions(); track action.text) {
+            <button class="btn" [class.btn-primary]="action.primary" [class.btn-secondary]="!action.primary">
+              <span>{{ action.text }}</span>
+              @if (action.primary) {
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              } @else {
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" fill="currentColor"/>
+                  <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              }
+            </button>
+          }
+        </div>
+      </div>
+      
+      @if (showTerminal()) {
+        <div class="hero-visual">
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="terminal-title">firebase.json</div>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line">
+                <span class="prompt">$</span>
+                <span class="command">firebase deploy</span>
+              </div>
+              <div class="terminal-line">
+                <span class="output">i Deploying to...</span>
+              </div>
+              <div class="terminal-line">
+                <span class="output success">✔ Deploy complete!</span>
+              </div>
+              <div class="terminal-cursor"></div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+<!-- Main App Container -->
+<app-navbar
+  [brand]="appName()"
+  [links]="navbarLinks"
+  [environmentOptions]="environmentOptions"
+  [showEnvironmentBadge]="showEnvironmentBadge()"
+  [environmentName]="environmentName()"
+  [activeLanguage]="activeLang()"
+  (environmentChange)="onEnvironmentChange($event)"
+  (languageChange)="onLanguageChange($event)"
+/>
+
+<app-hero
+  [title]="heroData.title"
+  [subtitle]="heroData.subtitle"
+  [description]="heroData.description"
+  [stats]="heroData.stats"
+  [actions]="heroData.actions"
+  [showTerminal]="true"
+/>
+
+<app-features
+  [title]="'features.title' | transloco"
+  [subtitle]="'features.subtitle' | transloco"
+  [features]="featuresData"
+  [columns]="3"
+/>
+
+<!-- Contact Section (mantenemos temporalmente hasta crear componente) -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-content">
+      <h2 class="contact-title">{{ 'contact.title' | transloco }}</h2>
+      <p class="contact-subtitle">
+        {{ 'contact.subtitle' | transloco }}
+      </p>
+      <div class="contact-actions">
+        <button class="btn btn-primary">
+          {{ 'contact.actions.start' | transloco }}
+        </button>
+        <button class="btn btn-outline">
+          {{ 'contact.actions.contact' | transloco }}
+        </button>
+      </div>
+      <div class="contact-info">
+        <p>{{ 'contact.info' | transloco }} <a href="mailto:soporte@ejemplo.com">Contacta nuestro equipo</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer
+  [brandTitle]="footerData.brandTitle"
+  [brandDescription]="footerData.brandDescription"
+  [copyright]="footerData.copyright"
+  [linkGroups]="footerData.linkGroups"
+  [showSocial]="true"
+/>

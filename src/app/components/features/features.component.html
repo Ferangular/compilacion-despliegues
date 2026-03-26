@@ -1,0 +1,27 @@
+<!-- Features Section -->
+<section id="features" class="features">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ title() }}</h2>
+      <p class="section-subtitle">{{ subtitle() }}</p>
+    </div>
+    <div class="features-grid" [style.grid-template-columns]="'repeat(' + columns() + ', 1fr)'">
+      @for (feature of features(); track feature.title) {
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+          <div class="feature-tech">
+            @for (tech of feature.tech; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
