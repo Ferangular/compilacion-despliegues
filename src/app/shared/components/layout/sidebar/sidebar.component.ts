@@ -47,11 +47,18 @@ export class SidebarComponent {
       order: 4
     },
     {
+      id: 'contact',
+      label: 'Contacto',
+      path: '/contact',
+      icon: '📧',
+      order: 5
+    },
+    {
       id: 'settings',
       label: 'Ajustes',
       path: '/settings',
       icon: '⚙️',
-      order: 5
+      order: 6
     }
   ];
 

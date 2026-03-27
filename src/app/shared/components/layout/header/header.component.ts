@@ -43,11 +43,18 @@ export class HeaderComponent {
       order: 3
     },
     {
+      id: 'contact',
+      label: 'Contacto',
+      path: '/contact',
+      icon: 'mail',
+      order: 4
+    },
+    {
       id: 'settings',
       label: 'Ajustes',
       path: '/settings',
       icon: 'settings',
-      order: 4
+      order: 5
     }
   ];
 

@@ -27,6 +27,11 @@ export const routes: Routes = [
     title: 'Ajustes'
   },
   {
+    path: 'contact',
+    loadComponent: () => import('./features/contact/contact.component').then(m => m.ContactComponent),
+    title: 'Contacto'
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
