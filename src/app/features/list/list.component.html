@@ -1,0 +1,32 @@
+<div class="list">
+  <div class="list__header">
+    <h1 class="list__title">Listado de Items</h1>
+    <p class="list__description">
+      Demostración de lazy loading y renderizado eficiente con Angular 21
+    </p>
+  </div>
+
+  <div class="list__content">
+    <div class="list__grid">
+      @for (item of items; track item.id) {
+        <article class="item-card">
+          <div class="item-card__header">
+            <h3 class="item-card__title">{{ item.title }}</h3>
+            <span class="item-card__priority item-card__priority--{{ item.priority.toLowerCase() }}">
+              {{ item.priority }}
+            </span>
+          </div>
+          
+          <p class="item-card__description">{{ item.description }}</p>
+          
+          <div class="item-card__footer">
+            <span class="item-card__category">{{ item.category }}</span>
+            <button class="item-card__btn" (click)="navigateToDetail(item.id)">
+              Ver detalles
+            </button>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</div>

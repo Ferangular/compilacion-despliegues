@@ -1,0 +1,119 @@
+<div class="performance-lab">
+  <div class="performance-lab__header">
+    <h1 class="performance-lab__title">Laboratorio de Rendimiento</h1>
+    <p class="performance-lab__description">
+      Monitorización y análisis de rendimiento en tiempo real
+    </p>
+  </div>
+
+  <div class="performance-lab__controls">
+    <button 
+      class="performance-lab__btn performance-lab__btn--primary"
+      (click)="startMonitoring()"
+      [disabled]="isMonitoring()"
+    >
+      {{ isMonitoring() ? '🔊 Monitorizando...' : '▶️ Iniciar Monitorización' }}
+    </button>
+    
+    <button 
+      class="performance-lab__btn performance-lab__btn--secondary"
+      (click)="stopMonitoring()"
+      [disabled]="!isMonitoring()"
+    >
+      ⏹️ Detener
+    </button>
+  </div>
+
+  @if (isMonitoring()) {
+    <div class="performance-lab__metrics">
+      <h2 class="performance-lab__section-title">Métricas en Tiempo Real</h2>
+      
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-card__header">
+            <span class="metric-card__title">Load Time</span>
+            <span class="metric-card__value">{{ metrics().loadTime | number:'1.1' }}ms</span>
+          </div>
+          <div class="metric-card__bar">
+            <div class="metric-card__progress" [style.width.%]="(metrics().loadTime / 60) * 100"></div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-card__header">
+            <span class="metric-card__title">Render Time</span>
+            <span class="metric-card__value">{{ metrics().renderTime | number:'1.1' }}ms</span>
+          </div>
+          <div class="metric-card__bar">
+            <div class="metric-card__progress" [style.width.%]="(metrics().renderTime / 25) * 100"></div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-card__header">
+            <span class="metric-card__title">Bundle Size</span>
+            <span class="metric-card__value">{{ metrics().bundleSize | number:'1.1' }}KB</span>
+          </div>
+          <div class="metric-card__bar">
+            <div class="metric-card__progress" [style.width.%]="(metrics().bundleSize / 150) * 100"></div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-card__header">
+            <span class="metric-card__title">Memory Usage</span>
+            <span class="metric-card__value">{{ metrics().memoryUsage | number:'1.1' }}MB</span>
+          </div>
+          <div class="metric-card__bar">
+            <div class="metric-card__progress" [style.width.%]="(metrics().memoryUsage / 70) * 100"></div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-card__header">
+            <span class="metric-card__title">FCP</span>
+            <span class="metric-card__value">{{ metrics().firstContentfulPaint | number:'1.1' }}ms</span>
+          </div>
+          <div class="metric-card__bar">
+            <div class="metric-card__progress" [style.width.%]="(metrics().firstContentfulPaint / 45) * 100"></div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-card__header">
+            <span class="metric-card__title">LCP</span>
+            <span class="metric-card__value">{{ metrics().largestContentfulPaint | number:'1.1' }}ms</span>
+          </div>
+          <div class="metric-card__bar">
+            <div class="metric-card__progress" [style.width.%]="(metrics().largestContentfulPaint / 60) * 100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="performance-lab__tips">
+    <h2 class="performance-lab__section-title">Técnicas de Optimización</h2>
+    
+    <div class="tips-grid">
+      @for (tip of performanceTips; track tip.title) {
+        <div class="tip-card" [class.tip-card--implemented]="tip.implemented">
+          <div class="tip-card__header">
+            <h3 class="tip-card__title">{{ tip.title }}</h3>
+            <span class="tip-card__status">
+              {{ tip.implemented ? '✅ Implementado' : '⏳ Pendiente' }}
+            </span>
+          </div>
+          
+          <p class="tip-card__description">{{ tip.description }}</p>
+          
+          <div class="tip-card__impact">
+            <span class="impact-badge impact-badge--{{ tip.impact.toLowerCase() }}">
+              Impacto: {{ tip.impact }}
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

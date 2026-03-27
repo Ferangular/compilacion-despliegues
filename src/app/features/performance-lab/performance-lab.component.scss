@@ -1,0 +1,232 @@
+.performance-lab {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+    color: #333;
+  }
+
+  &__description {
+    font-size: 1.125rem;
+    color: #666;
+    margin: 0;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  &__btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+
+    &--primary {
+      background-color: #4caf50;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background-color: #45a049;
+      }
+    }
+
+    &--secondary {
+      background-color: #f44336;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background-color: #da190b;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__section-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0 0 2rem;
+    color: #333;
+  }
+
+  &__metrics {
+    margin-bottom: 3rem;
+  }
+
+  &__tips {
+    margin-top: 3rem;
+  }
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.metric-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+  }
+
+  &__value {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 1.125rem;
+  }
+
+  &__bar {
+    height: 8px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__progress {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.tip-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e0e0e0;
+  transition: all 0.2s;
+
+  &--implemented {
+    border-color: #4caf50;
+    background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+  }
+
+  &__status {
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    background-color: #f5f5f5;
+    color: #666;
+  }
+
+  &__description {
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 1rem;
+  }
+
+  &__impact {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.impact-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &--alto {
+    background-color: #ffebee;
+    color: #c62828;
+  }
+
+  &--medio {
+    background-color: #fff3e0;
+    color: #ef6c00;
+  }
+
+  &--bajo {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+  }
+}
+
+@media (max-width: 768px) {
+  .performance-lab {
+    padding: 1rem;
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__controls {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  .metrics-grid,
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+}

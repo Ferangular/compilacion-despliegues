@@ -1,0 +1,52 @@
+<div class="home">
+  <div class="home__hero">
+    <div class="home__hero-content">
+      <h1 class="home__title">
+        {{ appConfig()?.appName }}
+      </h1>
+      <p class="home__subtitle">
+        Laboratorio de Optimización de Rendimiento con Angular 21
+      </p>
+      <p class="home__description">
+        Explora las mejores prácticas de optimización para producción: 
+        minificación, tree shaking, lazy loading, signals, zoneless y más.
+      </p>
+    </div>
+  </div>
+
+  <div class="home__features">
+    <h2 class="home__features-title">Características Principales</h2>
+    
+    <div class="home__features-grid">
+      @for (feature of features; track feature.title) {
+        <article class="feature-card" (click)="navigateTo(feature.path)">
+          <div class="feature-card__icon">{{ feature.icon }}</div>
+          <h3 class="feature-card__title">{{ feature.title }}</h3>
+          <p class="feature-card__description">{{ feature.description }}</p>
+          <button class="feature-card__btn">
+            Explorar →
+          </button>
+        </article>
+      }
+    </div>
+  </div>
+
+  <div class="home__info">
+    <div class="info-card">
+      <h3 class="info-card__title">Acerca de este Laboratorio</h3>
+      <p class="info-card__description">
+        Esta aplicación demuestra técnicas avanzadas de optimización para producción 
+        utilizando las últimas características de Angular 21. Cada sección está diseñada 
+        para ilustrar conceptos específicos de rendimiento con ejemplos prácticos.
+      </p>
+      <div class="info-card__tech">
+        <span class="tech-badge">Angular 21</span>
+        <span class="tech-badge">Standalone</span>
+        <span class="tech-badge">Signals</span>
+        <span class="tech-badge">Zoneless</span>
+        <span class="tech-badge">TypeScript</span>
+        <span class="tech-badge">SCSS/BEM</span>
+      </div>
+    </div>
+  </div>
+</div>

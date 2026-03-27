@@ -1,13 +1,27 @@
-import { Component, signal } from '@angular/core';
-
+import { Component, computed, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './shared/components/layout/header/header.component';
+import { SidebarComponent } from './shared/components/layout/sidebar/sidebar.component';
+import { FooterComponent } from './shared/components/layout/footer/footer.component';
+import { AppSettingsService } from './core/services/app-settings.service';
+import { SidebarService } from './core/services/sidebar.service';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.scss',
+  styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('compilacion-despliegues');
-
+  private appSettings = inject(AppSettingsService);
+  private sidebarService = inject(SidebarService);
+  
+  appConfig = computed(() => this.appSettings.config);
+  isSidebarCollapsed = this.sidebarService.isCollapsed;
 }

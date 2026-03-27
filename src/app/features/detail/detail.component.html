@@ -1,0 +1,88 @@
+<div class="detail">
+  <div class="detail__header">
+    <button class="detail__back-btn" (click)="goBack()">
+      ← Volver al listado
+    </button>
+    
+    <h1 class="detail__title">{{ item().title }}</h1>
+    
+    <div class="detail__meta">
+      <span class="detail__category">{{ item().category }}</span>
+      <span class="detail__priority detail__priority--{{ item().priority.toLowerCase() }}">
+        {{ item().priority }}
+      </span>
+      <span class="detail__status">{{ item().status }}</span>
+    </div>
+  </div>
+
+  <div class="detail__content">
+    <div class="detail__main">
+      <section class="detail-section">
+        <h2 class="detail-section__title">Descripción</h2>
+        <p class="detail-section__content">{{ item().description }}</p>
+      </section>
+
+      <section class="detail-section">
+        <h2 class="detail-section__title">Información Adicional</h2>
+        <div class="detail-info">
+          <div class="detail-info__row">
+            <span class="detail-info__label">ID:</span>
+            <span class="detail-info__value">{{ item().id }}</span>
+          </div>
+          <div class="detail-info__row">
+            <span class="detail-info__label">Fecha de creación:</span>
+            <span class="detail-info__value">{{ item().createdAt | date:'longDate' }}</span>
+          </div>
+          <div class="detail-info__row">
+            <span class="detail-info__label">Estado:</span>
+            <span class="detail-info__value">{{ item().status }}</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <h2 class="detail-section__title">Etiquetas</h2>
+        <div class="detail-tags">
+          @for (tag of item().tags; track tag) {
+            <span class="detail-tag">{{ tag }}</span>
+          }
+        </div>
+      </section>
+    </div>
+
+    <aside class="detail__sidebar">
+      <div class="detail-card">
+        <h3 class="detail-card__title">Acciones</h3>
+        <div class="detail-card__actions">
+          <button class="detail-card__btn detail-card__btn--primary">
+            Editar
+          </button>
+          <button class="detail-card__btn detail-card__btn--secondary">
+            Compartir
+          </button>
+          <button class="detail-card__btn detail-card__btn--danger">
+            Eliminar
+          </button>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3 class="detail-card__title">Rendimiento</h3>
+        <div class="performance-stats">
+          <div class="performance-stat">
+            <span class="performance-stat__label">Load time:</span>
+            <span class="performance-stat__value">12ms</span>
+          </div>
+          <div class="performance-stat">
+            <span class="performance-stat__label">Bundle size:</span>
+            <span class="performance-stat__value">2.4KB</span>
+          </div>
+          <div class="performance-stat">
+            <span class="performance-stat__label">Render time:</span>
+            <span class="performance-stat__value">8ms</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>

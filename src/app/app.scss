@@ -1,0 +1,78 @@
+// Variables BEM y diseño
+:root {
+  --sidebar-width: 250px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  &__container {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+  }
+
+  &__sidebar {
+    width: var(--sidebar-width);
+    background: #f5f5f5;
+    border-right: 1px solid #e0e0e0;
+    transition: width 0.3s ease;
+    flex-shrink: 0;
+
+    &--collapsed {
+      --sidebar-width: 60px;
+    }
+  }
+
+  &__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  &__content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+
+  &__footer {
+    background: #f5f5f5;
+    border-top: 1px solid #e0e0e0;
+    padding: 1rem;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .app {
+    &__sidebar {
+      position: fixed;
+      left: -250px;
+      top: 0;
+      height: 100vh;
+      z-index: 200;
+      transition: left 0.3s ease;
+
+      &--open {
+        left: 0;
+      }
+    }
+
+    &__content {
+      padding: 1rem;
+    }
+  }
+}
