@@ -1,7 +1,7 @@
 {
   "appName": "Compilación y Despliegues",
   "environmentName": "Producción",
-  "apiUrl": "https://api.miproyecto.com/api",
+  "apiUrl": "",
   "debug": false,
   "logo": "assets/icons/logo-prod.svg",
   "theme": {
