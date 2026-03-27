@@ -1,7 +1,6 @@
 import { Component, signal, computed } from '@angular/core';
 import { email, FieldState, form, FormField, maxLength, minLength, required } from '@angular/forms/signals';
 
-
 interface ContactData {
   name: string;
   email: string;
@@ -19,7 +18,6 @@ interface ContactData {
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  // Modelo de datos del formulario
   contactModel = signal<ContactData>({
     name: '',
     email: '',
@@ -29,9 +27,7 @@ export class ContactComponent {
     subscribeNewsletter: false
   });
 
-  // Crear el formulario con validación
   contactForm = form(this.contactModel, (schemaPath) => {
-    // Validaciones para cada campo
     required(schemaPath.name, { message: 'El nombre es requerido' });
     minLength(schemaPath.name, 3, { message: 'Mínimo 3 caracteres' });
     maxLength(schemaPath.name, 50, { message: 'Máximo 50 caracteres' });
@@ -150,7 +146,7 @@ export class ContactComponent {
   getFieldErrors(field: () => FieldState<string>): string[] {
     const fieldState = field();
     const errors = fieldState.errors();
-    return errors ? errors.map((error: any) => error.message || 'Error desconocido').filter(Boolean) : [];
+    return errors ? errors.map((error: { kind: string; message?: string }) => error.message || 'Error desconocido').filter(Boolean) : [];
   }
 
   hasFieldError(field: () => FieldState<string>): boolean {

@@ -13,7 +13,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: white;
+    background: #c1083b; // Verde para header
     border-bottom: 1px solid #e0e0e0;
   }
 
@@ -24,11 +24,16 @@
   }
 
   &__sidebar {
+    position: fixed;
+    top: 60px; // Debajo del header
+    left: 0;
     width: var(--sidebar-width);
-    background: #f5f5f5;
+    background: #e8f4fd; // Azul para sidebar
     border-right: 1px solid #e0e0e0;
     transition: width 0.3s ease;
     flex-shrink: 0;
+    height: calc(100vh - 124px); // Altura menos header (60px) y footer (64px)
+    z-index: 20; // Por encima del footer
 
     &--collapsed {
       --sidebar-width: 60px;
@@ -40,6 +45,12 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
+    margin-left: var(--sidebar-width); // Espacio para el sidebar fijo
+    transition: margin-left 0.3s ease; // Transición suave
+
+    .app__sidebar--collapsed & {
+      margin-left: 60px; // Espacio cuando está colapsado
+    }
   }
 
   &__main {
@@ -49,16 +60,46 @@
     min-height: 0;
   }
 
-  &__content {
-    flex: 1;
-    padding: 2rem;
-    overflow-y: auto;
+  // Scroll personalizado para mejor UX
+&__content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 64px);
+
+  // Scroll personalizado
+  &::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 4px;
   }
 
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: #a8a8a8;
+    }
+  }
+}
+
   &__footer {
-    background: #f5f5f5;
+    background-color: red!important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff3e0; // Naranja para footer
     border-top: 1px solid #e0e0e0;
     padding: 1rem;
+    z-index: 10;
   }
 }
 
