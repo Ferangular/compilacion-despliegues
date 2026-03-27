@@ -19,6 +19,14 @@ export class HeaderComponent {
   isSidebarOpen = signal(false);
 
   appConfig = computed(() => this.appSettings.config);
+  
+  // Idiomas disponibles
+  availableLanguages = [
+    { code: 'es', name: 'ES', flag: '🇪🇸' },
+    { code: 'en', name: 'EN', flag: '🇬🇧' }
+  ];
+  
+  currentLanguage = signal('es'); // Idioma actual (por defecto español)
 
   navigationItems: NavigationItem[] = [
     {
@@ -60,6 +68,12 @@ export class HeaderComponent {
 
   toggleSidebar(): void {
     this.sidebarService.toggle();
+  }
+
+  changeLanguage(languageCode: string): void {
+    this.currentLanguage.set(languageCode);
+    // Aquí podrías integrar con un servicio de i18n
+    console.log('Idioma cambiado a:', languageCode);
   }
 
   navigateTo(path: string): void {

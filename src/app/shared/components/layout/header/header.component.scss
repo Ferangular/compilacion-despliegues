@@ -62,6 +62,58 @@
     gap: 1rem;
   }
 
+  &__language-selector {
+    position: relative;
+  }
+
+  &__language-select {
+    appearance: none;
+    background: rgba(255, 255, 255, 0.9);
+    border: 0.0625rem solid rgba(44, 62, 80, 0.2);
+    border-radius: 1.25rem;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 4rem;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 1);
+      border-color: rgba(44, 62, 80, 0.3);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+
+    // Custom arrow
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &::after {
+      content: '▼';
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.625rem;
+      color: #2c3e50;
+      pointer-events: none;
+    }
+  }
+
   &__nav {
     @media (max-width: 768px) {
       display: none;

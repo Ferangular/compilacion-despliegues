@@ -28,6 +28,22 @@
         </ul>
       </nav>
 
+      <!-- Selector de idiomas -->
+      <div class="header__language-selector">
+        <select 
+          class="header__language-select"
+          [value]="currentLanguage()"
+          (change)="changeLanguage($any($event.target).value)"
+          aria-label="Seleccionar idioma"
+        >
+          @for (lang of availableLanguages; track lang.code) {
+            <option [value]="lang.code">
+              {{ lang.flag }} {{ lang.name }}
+            </option>
+          }
+        </select>
+      </div>
+
       @if (appConfig()?.ui?.showEnvironmentBadge) {
         <div class="header__badge">
           <span class="header__badge-text">{{ appConfig()?.environmentName }}</span>
