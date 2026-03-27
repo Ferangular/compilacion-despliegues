@@ -12,12 +12,12 @@ import { SidebarService } from '../../../../core/services/sidebar.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  private router = inject(Router);
+  router = inject(Router);
   private appSettings = inject(AppSettingsService);
   private sidebarService = inject(SidebarService);
 
   isSidebarOpen = signal(false);
-  
+
   appConfig = computed(() => this.appSettings.config);
 
   navigationItems: NavigationItem[] = [

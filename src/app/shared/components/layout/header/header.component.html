@@ -21,15 +21,14 @@
                 (click)="navigateTo(item.path)"
                 [class.header__nav-btn--active]="router.url === item.path"
               >
-                <span class="header__nav-icon">{{ item.icon }}</span>
-                <span class="header__nav-label">{{ item.label }}</span>
+                <span class="header__nav-icon">{{ item.label }}</span>
               </button>
             </li>
           }
         </ul>
       </nav>
 
-      @if (appConfig()?.ui.showEnvironmentBadge) {
+      @if (appConfig()?.ui?.showEnvironmentBadge) {
         <div class="header__badge">
           <span class="header__badge-text">{{ appConfig()?.environmentName }}</span>
         </div>
