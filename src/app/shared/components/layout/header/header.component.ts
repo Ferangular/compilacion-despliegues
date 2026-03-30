@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { AppSettingsService } from '../../../../core/services/app-settings.service';
 import { NavigationItem } from '../../../../core/interfaces/navigation.interface';
 import { SidebarService } from '../../../../core/services/sidebar.service';
-import { TranslationService } from '../../../../core/services/translation.service';
-import { TranslocoDirective, TranslocoPipe } from '@jsverse/transloco';
+import {  TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [TranslocoDirective, TranslocoPipe],
+  imports: [ TranslocoPipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -17,7 +18,7 @@ export class HeaderComponent {
   router = inject(Router);
   private appSettings = inject(AppSettingsService);
   private sidebarService = inject(SidebarService);
-  private translationService = inject(TranslationService);
+  private translocoService = inject(TranslocoService);
 
   isSidebarOpen = signal(false);
 
@@ -29,7 +30,14 @@ export class HeaderComponent {
     { code: 'en', name: 'EN', flag: '🇬🇧' },
   ];
 
-  currentLanguage = this.translationService.currentLang; // Conectar con el servicio
+  currentLanguage = toSignal(
+    this.translocoService.langChanges$.pipe(
+      map(lang => {
+        console.log('Idioma actualizado:', lang);
+        return lang;
+      })
+    )
+  );
 
   navigationItems: NavigationItem[] = [
     {
@@ -74,7 +82,8 @@ export class HeaderComponent {
   }
 
   changeLanguage(languageCode: string): void {
-    this.translationService.changeLanguage(languageCode);
+    console.log('Cambiando idioma a:', languageCode);
+    this.translocoService.setActiveLang(languageCode);
   }
 
   navigateTo(path: string): void {

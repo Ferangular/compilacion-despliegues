@@ -5,6 +5,7 @@ import { SidebarComponent } from './shared/components/layout/sidebar/sidebar.com
 import { FooterComponent } from './shared/components/layout/footer/footer.component';
 import { AppSettingsService } from './core/services/app-settings.service';
 import { SidebarService } from './core/services/sidebar.service';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { SidebarService } from './core/services/sidebar.service';
     RouterOutlet,
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    TranslocoPipe
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

@@ -1,20 +1,22 @@
 import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppSettingsService } from '../../core/services/app-settings.service';
+import { TranslocoPipe } from '@jsverse/transloco';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [TranslocoPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   private router = inject(Router);
   private appSettings = inject(AppSettingsService);
-  
+
   appConfig = computed(() => this.appSettings.config);
-  
+
   features = [
     {
       title: 'Lazy Loading',

@@ -9,7 +9,7 @@
         <img [src]="appConfig()?.logo" [alt]="appConfig()?.appName" class="header__logo-img">
         <h1 class="header__title">{{ appConfig()?.appName }}</h1>
       </div>
-    </div>º
+    </div>
 
     <div class="header__right">
       <nav class="header__nav">
@@ -21,7 +21,7 @@
                 (click)="navigateTo(item.path)"
                 [class.header__nav-btn--active]="router.url === item.path"
               >
-                <span class="header__nav-icon">{{ item.label | transloco }}</span>
+                <span class="header__nav-icon">{{ 'navigation.' + item.id | transloco }}</span>
               </button>
             </li>
           }
@@ -30,7 +30,7 @@
 
       <!-- Selector de idiomas -->
       <div class="header__language-selector">
-        <select 
+        <select
           class="header__language-select"
           [value]="currentLanguage()"
           (change)="changeLanguage($any($event.target).value)"

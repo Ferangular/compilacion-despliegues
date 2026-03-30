@@ -21,7 +21,7 @@
   </div>
   
   <!-- Botón toggle independiente y flotante -->
-  <button class="footer__toggle" (click)="toggleFooter()" aria-label="Toggle footer">
+  <button class="footer__toggle" (click)="toggleFooter()" aria-label="{{ 'footer.toggle' | transloco }}">
     <span class="footer__toggle-icon">{{ isFooterVisible() ? '▼' : '▲' }}</span>
   </button>
 </div>
