@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ TranslocoPipe],
+  imports: [TranslocoPipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -39,40 +39,60 @@ export class HeaderComponent {
     )
   );
 
+  // Signal para las traducciones que se actualiza cuando cambia el idioma
+  translations = toSignal(
+    this.translocoService.selectTranslateObject('navigation').pipe(
+      map(translations => {
+        console.log('Traducciones de navigation actualizadas:', translations);
+        return translations;
+      })
+    ),
+    { initialValue: {} }
+  );
+
+  // Método para obtener traducciones directamente
+  getTranslation(key: string): string {
+    console.log('Traducción para:', key);
+    const result = this.translocoService.translate(key);
+    console.log('Resultado:', result);
+    console.log('Idioma actual:', this.translocoService.getActiveLang());
+    return result;
+  }
+
   navigationItems: NavigationItem[] = [
     {
       id: 'home',
       label: 'Inicio',
       path: '/',
-      icon: 'home',
+      icon: '🏠',
       order: 1,
     },
     {
       id: 'list',
       label: 'Listado',
       path: '/list',
-      icon: 'list',
+      icon: '📋',
       order: 2,
     },
     {
       id: 'performance',
       label: 'Rendimiento',
       path: '/performance-lab',
-      icon: 'speed',
+      icon: '⚡',
       order: 3,
     },
     {
       id: 'contact',
       label: 'Contacto',
       path: '/contact',
-      icon: 'mail',
+      icon: '📧',
       order: 4,
     },
     {
       id: 'settings',
       label: 'Ajustes',
       path: '/settings',
-      icon: 'settings',
+      icon: '⚙️',
       order: 5,
     },
   ];

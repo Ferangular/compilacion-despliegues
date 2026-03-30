@@ -33,24 +33,31 @@
               }
             ],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "sourceMap": false
           },
           "configurations": {
             "production": {
               "optimization": true,
               "aot": true,
-              "sourceMap": false,
               "outputHashing": "all",
+              "extractLicenses": true,
+              "sourceMap": false,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "300kB",
+                  "maximumError": "500kB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "5kB",
+                  "maximumError": "10kB"
+                },
+                {
+                  "type": "any",
+                  "maximumWarning": "150kB",
+                  "maximumError": "200kB"
                 }
               ],
               "fileReplacements": [
@@ -77,6 +84,23 @@
                   "with": "src/environments/environment.fpatino.ts"
                 }
               ]
+            },
+            "debug-production": {
+              "optimization": true,
+              "aot": true,
+              "outputHashing": "all",
+              "extractLicenses": true,
+              "sourceMap": {
+                "scripts": true,
+                "styles": true,
+                "vendor": true
+              },
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -92,6 +116,9 @@
             },
             "fpatino": {
               "buildTarget": "compilacion-despliegues:build:fpatino"
+            },
+            "debug-production": {
+              "buildTarget": "compilacion-despliegues:build:debug-production"
             }
           },
           "defaultConfiguration": "development"

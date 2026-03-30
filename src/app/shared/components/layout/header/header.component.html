@@ -6,8 +6,8 @@
       </button>
 
       <div class="header__logo">
-        <img [src]="appConfig()?.logo" [alt]="appConfig()?.appName" class="header__logo-img">
-        <h1 class="header__title">{{ appConfig()?.appName }}</h1>
+        <img [src]="appConfig().logo" [alt]="appConfig().appName" class="header__logo-img">
+        <h1 class="header__title">{{ appConfig().appName }}</h1>
       </div>
     </div>
 
@@ -21,7 +21,8 @@
                 (click)="navigateTo(item.path)"
                 [class.header__nav-btn--active]="router.url === item.path"
               >
-                <span class="header__nav-icon">{{ 'navigation.' + item.id | transloco }}</span>
+                <span class="header__nav-icon">{{ item.icon }}</span>
+                <span class="header__nav-text">{{ translations()[item.id] || item.id }}</span>
               </button>
             </li>
           }
@@ -44,9 +45,9 @@
         </select>
       </div>
 
-      @if (appConfig()?.ui?.showEnvironmentBadge) {
+      @if (appConfig().ui.showEnvironmentBadge) {
         <div class="header__badge">
-          <span class="header__badge-text">{{ appConfig()?.environmentName }}</span>
+          <span class="header__badge-text">{{ appConfig().environmentName }}</span>
         </div>
       }
     </div>

@@ -98,7 +98,7 @@ export class SettingsComponent {
 
   onInputChange(event: Event, key: keyof PerformanceSettings): void {
     const input = event.target as HTMLInputElement;
-    
+
     // Type cast based on the expected value type for each key
     if (key === 'preloadStrategy') {
       this.updateSetting(key, input.value as 'preload' | 'prefetch' | 'none');
