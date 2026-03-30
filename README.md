@@ -182,3 +182,4 @@ Las sugerencias y mejoras son bienvenidas. Por favor, abre un issue para discuti
 ---
 
 *Hecho con ❤️ para la comunidad de desarrolladores Angular*
+https://esbuild.github.io/analyze/

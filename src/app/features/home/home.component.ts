@@ -38,6 +38,12 @@ export class HomeComponent {
       path: '/performance-lab'
     },
     {
+      title: 'Laboratorio de Imágenes',
+      description: 'Comparación de lazy loading nativo vs manual con IntersectionObserver',
+      icon: '🖼️',
+      path: '/image-lab'
+    },
+    {
       title: 'Code Splitting',
       description: 'División inteligente del código para carga progresiva',
       icon: '📦',

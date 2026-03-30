@@ -22,6 +22,11 @@ export const routes: Routes = [
     title: 'Laboratorio de Rendimiento'
   },
   {
+    path: 'image-lab',
+    loadComponent: () => import('./features/image-lab/image-lab.component').then(m => m.ImageLabComponent),
+    title: 'Laboratorio de Imágenes'
+  },
+  {
     path: 'settings',
     loadComponent: () => import('./features/settings/settings.component').then(m => m.SettingsComponent),
     title: 'Ajustes'

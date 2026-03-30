@@ -1,0 +1,89 @@
+<div class="image-lab">
+  <header class="image-lab__header">
+    <h1 class="image-lab__title">Laboratorio de Lazy Loading</h1>
+    <p class="image-lab__description">
+      Comparación entre lazy loading nativo (loading="lazy") y manual con IntersectionObserver
+    </p>
+    <button class="image-lab__reload" (click)="reloadTest()">
+      Recargar Prueba
+    </button>
+  </header>
+
+  <!-- Sección A: Lazy Loading Nativo -->
+  <section class="image-lab__section">
+    <h2 class="image-lab__section-title">Sección A: Lazy Loading Nativo (loading="lazy")</h2>
+    <div class="image-lab__grid">
+      @for (image of nativeLazyImages; track image.id; let first = $first) {
+        <div class="image-lab__item">
+          <div class="image-lab__placeholder">
+            <img 
+              class="image-lab__img image-lab__img--native"
+              [src]="image.src"
+              [alt]="image.alt"
+              [title]="image.title"
+              [attr.loading]="first ? 'eager' : 'lazy'"
+              [attr.fetchpriority]="first ? 'high' : 'auto'"
+              width="400"
+              height="300"
+              decoding="async"
+            />
+          </div>
+          <div class="image-lab__info">
+            <h3 class="image-lab__item-title">{{ image.title }}</h3>
+            <p class="image-lab__item-desc">{{ image.alt }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Sección B: Lazy Loading Manual -->
+  <section class="image-lab__section" #lazyContainer>
+    <h2 class="image-lab__section-title">Sección B: Lazy Loading Manual (IntersectionObserver)</h2>
+    <div class="image-lab__grid">
+      @for (image of manualLazyImages; track image.id) {
+        <div class="image-lab__item image-lab__manual-item">
+          <div class="image-lab__placeholder">
+            <img 
+              class="image-lab__img image-lab__img--manual"
+              [attr.data-src]="image.src"
+              [alt]="image.alt"
+              [title]="image.title"
+              width="400"
+              height="300"
+              decoding="async"
+            />
+            <div class="image-lab__skeleton"></div>
+          </div>
+          <div class="image-lab__info">
+            <h3 class="image-lab__item-title">{{ image.title }}</h3>
+            <p class="image-lab__item-desc">{{ image.alt }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Información de medición -->
+  <footer class="image-lab__footer">
+    <h3 class="image-lab__footer-title">Cómo medir en DevTools</h3>
+    <div class="image-lab__instructions">
+      <div class="image-lab__instruction">
+        <strong>1. Network Tab:</strong>
+        Filtra por ".jpg" y observa cuándo se solicitan las imágenes
+      </div>
+      <div class="image-lab__instruction">
+        <strong>2. Performance Tab:</strong>
+        Graba mientras haces scroll para ver el timeline de carga
+      </div>
+      <div class="image-lab__instruction">
+        <strong>3. Coverage Tab:</strong>
+        Verifica el uso de código JavaScript
+      </div>
+      <div class="image-lab__instruction">
+        <strong>4. Lighthouse:</strong>
+        Ejecuta audit para medir impacto en rendimiento
+      </div>
+    </div>
+  </footer>
+</div>

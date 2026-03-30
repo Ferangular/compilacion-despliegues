@@ -47,18 +47,25 @@ export class SidebarComponent {
       order: 4
     },
     {
+      id: 'image-lab',
+      label: 'Laboratorio Imágenes',
+      path: '/image-lab',
+      icon: '🖼️',
+      order: 5
+    },
+    {
       id: 'contact',
       label: 'Contacto',
       path: '/contact',
       icon: '📧',
-      order: 5
+      order: 6
     },
     {
       id: 'settings',
       label: 'Ajustes',
       path: '/settings',
       icon: '⚙️',
-      order: 6
+      order: 7
     }
   ];
 

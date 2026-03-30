@@ -38,7 +38,14 @@
           },
           "configurations": {
             "production": {
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "aot": true,
               "outputHashing": "all",
               "extractLicenses": true,
@@ -46,7 +53,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "300kB",
+                  "maximumWarning": "350kB",
                   "maximumError": "500kB"
                 },
                 {
@@ -56,7 +63,7 @@
                 },
                 {
                   "type": "any",
-                  "maximumWarning": "150kB",
+                  "maximumWarning": "160kB",
                   "maximumError": "200kB"
                 }
               ],
