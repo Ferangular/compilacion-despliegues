@@ -1,0 +1,381 @@
+<div class="asset-optimization-container">
+  <header class="header">
+    <h1>🚀 Laboratorio de Optimización de Assets</h1>
+    <p class="subtitle">Pruebas prácticas de imágenes, fuentes y CDN</p>
+  </header>
+
+  <section class="control-panel">
+    <div class="controls">
+      <button class="btn btn-primary" (click)="runAllTests()" [disabled]="isTestRunning()">
+        {{ isTestRunning() ? '⏳ Ejecutando...' : '🧪 Ejecutar todas las pruebas' }}
+      </button>
+
+      <button class="btn btn-secondary" (click)="testImagePerformance()" [disabled]="isTestRunning()">
+        📸 Probar imágenes
+      </button>
+
+      <button class="btn btn-secondary" (click)="testCDNPerformance()" [disabled]="isTestRunning()">
+        🌐 Probar CDN
+      </button>
+
+      <button class="btn btn-danger" (click)="resetTests()" [disabled]="isTestRunning()">🔄 Resetear</button>
+    </div>
+
+    @if (isTestRunning() || currentAction()) {
+      <div class="progress-container">
+        <p class="progress-label">{{ currentAction() }}</p>
+
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="testProgress()"></div>
+        </div>
+
+        <span class="progress-text">{{ progressLabel() }}</span>
+      </div>
+    }
+  </section>
+
+  <section class="images-section">
+    <h2>📸 Optimización de imágenes</h2>
+
+    <div class="test-grid">
+      <div class="test-card">
+        <h3>Formatos modernos</h3>
+
+        <div class="image-comparison">
+          @for (image of testImages; track image.id) {
+            <article class="image-item">
+              <h4>{{ image.title }}</h4>
+
+              <div class="image-container">
+                <img
+                  [ngSrc]="image.src"
+                  [alt]="image.title"
+                  [width]="image.width"
+                  [height]="image.height"
+                  [priority]="image.id === 2"
+                  loading="lazy"
+                  class="test-image"
+                />
+
+                <div class="image-info">
+                  <span class="format-badge" [class.optimized]="image.optimized">
+                    {{ image.format }}
+                  </span>
+
+                  @if (imagePerformance().length > 0) {
+                    <span class="size-info">
+                      {{ formatBytes(getImageSize(image.src)) }}
+                    </span>
+                    <span class="time-info">
+                      {{ formatTime(getImageLoadTime(image.src)) }}
+                    </span>
+                  }
+                </div>
+
+                <div class="compression-info">
+                  <p>
+                    <strong>Compresión:</strong>
+                    {{ getCompressionInfo(image.format).ratio }}
+                  </p>
+                  <p>
+                    <small>{{ image.description }}</small>
+                  </p>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+
+      <div class="test-card">
+        <h3>Responsive images con srcset</h3>
+
+        <div class="responsive-demo">
+          <img
+            src="/assets/images/hero-optimized.webp"
+            [srcset]="getResponsiveSrcset()"
+            sizes="(max-width: 320px) 320px, (max-width: 640px) 640px, (max-width: 800px) 800px, 1200px"
+            alt="Imagen responsive"
+            loading="lazy"
+            width="1200"
+            height="900"
+            class="responsive-image"
+          />
+
+          <div class="responsive-info">
+            <p>🎯 El navegador elige la variante adecuada según el ancho disponible.</p>
+            <p>📱 En móvil se reduce la descarga.</p>
+            <p>💻 En pantallas grandes se mantiene calidad visual.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <h3>Lazy loading</h3>
+
+        <div class="lazy-loading-demo">
+          <p>Estas imágenes se descargan cuando entran en viewport.</p>
+
+          <div class="lazy-images">
+            @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+              <img
+                [ngSrc]="i % 2 === 0 ? '/assets/images/card-1.webp' : '/assets/images/card-2.webp'"
+                [alt]="'Lazy image ' + i"
+                [width]="400"
+                [height]="300"
+                loading="lazy"
+                class="lazy-image"
+              />
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fonts-section">
+    <h2>🔤 Optimización de fuentes</h2>
+
+    <div class="test-grid">
+      <div class="test-card">
+        <h3>Fuentes optimizadas</h3>
+
+        <div class="font-demo">
+          @for (font of testFonts; track font.family) {
+            <div class="font-sample">
+              <h4>{{ font.family }}</h4>
+
+              <p class="font-text" [style.font-family]="font.family">
+                El rápido zorro marrón salta sobre el perro perezoso. The quick brown fox jumps over the lazy dog.
+              </p>
+
+              <p class="font-description">{{ font.description }}</p>
+
+              <div class="font-info">
+                <span class="format-badge">{{ font.format }}</span>
+                <span class="display-badge">{{ font.display }}</span>
+              </div>
+
+              <div class="font-subset">
+                <p><strong>Subconjunto:</strong></p>
+                <code class="subset-chars">{{ simulateFontSubset(font.family) }}</code>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="test-card">
+        <h3>Font display</h3>
+
+        <div class="font-display-demo">
+          <div class="font-strategy">
+            <h4>font-display: swap</h4>
+            <p class="font-swap">Texto visible inmediatamente con fuente de respaldo.</p>
+          </div>
+
+          <div class="font-strategy">
+            <h4>font-display: fallback</h4>
+            <p class="font-fallback">Estrategia intermedia entre velocidad y consistencia.</p>
+          </div>
+
+          <div class="font-strategy">
+            <h4>WOFF2</h4>
+            <p class="font-block">Formato moderno con mejor compresión.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cdn-section">
+    <h2>🌐 Content Delivery Networks</h2>
+
+    <div class="test-grid">
+      <div class="test-card">
+        <h3>Proveedores CDN</h3>
+
+        <div class="cdn-providers">
+          @for (provider of cdnProviders; track provider.name) {
+            <div class="cdn-provider">
+              <h4>{{ provider.name }}</h4>
+              <p class="cdn-description">{{ provider.description }}</p>
+
+              @if (cdnPerformance().length > 0) {
+                @for (perf of getCdnPerformanceForProvider(provider.name); track perf.provider) {
+                  <div class="perf-metric">
+                    <span class="metric-label">Tiempo simulado:</span>
+                    <span class="metric-value" [class]="getPerformanceClass(perf.simulatedLoadTime)">
+                      {{ formatTime(perf.simulatedLoadTime) }}
+                    </span>
+                  </div>
+
+                  <div class="perf-metric">
+                    <span class="metric-label">Ahorro estimado:</span>
+                    <span class="metric-value">
+                      {{
+                        (
+                          ((perf.simulatedOriginalSize - perf.simulatedOptimizedSize) / perf.simulatedOriginalSize) *
+                          100
+                        ).toFixed(1)
+                      }}%
+                    </span>
+                  </div>
+                }
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="test-card">
+        <h3>Beneficios del CDN</h3>
+
+        <div class="cdn-benefits">
+          <div class="benefit-item">
+            <strong>🚀 Velocidad:</strong>
+            entrega desde nodos cercanos al usuario.
+          </div>
+          <div class="benefit-item">
+            <strong>💰 Ahorro:</strong>
+            menos consumo del servidor de origen.
+          </div>
+          <div class="benefit-item">
+            <strong>🛡️ Disponibilidad:</strong>
+            mejor tolerancia a picos de tráfico.
+          </div>
+          <div class="benefit-item">
+            <strong>🔍 SEO:</strong>
+            la velocidad de carga mejora experiencia y posicionamiento.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  @if (hasTestResults()) {
+    <section class="results-section">
+      <h2>📊 Resultados de pruebas</h2>
+
+      <div class="results-grid">
+        @if (currentImageResult()) {
+          <div class="result-card">
+            <h3>Optimización de imágenes</h3>
+
+            <div class="result-metrics">
+              <div class="metric">
+                <span class="metric-label">Ahorro de tamaño:</span>
+                <span class="metric-value" [class]="getSavingsClass(currentImageResult()!.sizeSavings)">
+                  {{ currentImageResult()!.sizeSavings.toFixed(1) }}%
+                </span>
+              </div>
+
+              <div class="metric">
+                <span class="metric-label">Promedio original:</span>
+                <span class="metric-value">
+                  {{ formatBytes(currentImageResult()!.avgOriginalSize) }}
+                </span>
+              </div>
+
+              <div class="metric">
+                <span class="metric-label">Promedio optimizado:</span>
+                <span class="metric-value">
+                  {{ formatBytes(currentImageResult()!.avgOptimizedSize) }}
+                </span>
+              </div>
+            </div>
+          </div>
+        }
+
+        @if (currentCdnResult()) {
+          <div class="result-card">
+            <h3>Rendimiento CDN</h3>
+
+            <div class="result-metrics">
+              <div class="metric">
+                <span class="metric-label">Tiempo promedio:</span>
+                <span class="metric-value" [class]="getPerformanceClass(currentCdnResult()!.avgLoadTime)">
+                  {{ formatTime(currentCdnResult()!.avgLoadTime) }}
+                </span>
+              </div>
+
+              <div class="metric">
+                <span class="metric-label">Ahorro promedio:</span>
+                <span class="metric-value" [class]="getSavingsClass(currentCdnResult()!.avgSizeSavings)">
+                  {{ currentCdnResult()!.avgSizeSavings.toFixed(1) }}%
+                </span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+  @if (imagePerformance().length > 0 || cdnPerformance().length > 0) {
+    <section class="metrics-section">
+      <h2>📈 Métricas detalladas</h2>
+
+      <div class="metrics-grid">
+        @if (imagePerformance().length > 0) {
+          <div class="metrics-card">
+            <h3>Rendimiento de imágenes</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Imagen</th>
+                  <th>Formato</th>
+                  <th>Tamaño</th>
+                  <th>Tiempo</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (perf of imagePerformance(); track perf.url) {
+                  <tr>
+                    <td>{{ perf.title }}</td>
+                    <td>{{ perf.format }}</td>
+                    <td>{{ formatBytes(perf.size) }}</td>
+                    <td>{{ formatTime(perf.loadTime) }}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        }
+
+        @if (cdnPerformance().length > 0) {
+          <div class="metrics-card">
+            <h3>Rendimiento de CDN</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Proveedor</th>
+                  <th>Tiempo</th>
+                  <th>Ahorro</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (perf of cdnPerformance(); track perf.provider) {
+                  <tr>
+                    <td>{{ perf.provider }}</td>
+                    <td>{{ formatTime(perf.simulatedLoadTime) }}</td>
+                    <td>
+                      {{
+                        (
+                          ((perf.simulatedOriginalSize - perf.simulatedOptimizedSize) / perf.simulatedOriginalSize) *
+                          100
+                        ).toFixed(1)
+                      }}%
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        }
+      </div>
+    </section>
+  }
+</div>

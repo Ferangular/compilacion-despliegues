@@ -1,11 +1,11 @@
-import { Component, signal, computed, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppSettingsService } from '../../../../core/services/app-settings.service';
-import { NavigationItem } from '../../../../core/interfaces/navigation.interface';
-import { SidebarService } from '../../../../core/services/sidebar.service';
-import {  TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { map } from 'rxjs/operators';
+import { NavigationItem } from '../../../../core/interfaces/navigation.interface';
+import { AppSettingsService } from '../../../../core/services/app-settings.service';
+import { SidebarService } from '../../../../core/services/sidebar.service';
 
 @Component({
   selector: 'app-header',
@@ -32,22 +32,22 @@ export class HeaderComponent {
 
   currentLanguage = toSignal(
     this.translocoService.langChanges$.pipe(
-      map(lang => {
+      map((lang) => {
         console.log('Idioma actualizado:', lang);
         return lang;
-      })
-    )
+      }),
+    ),
   );
 
   // Signal para las traducciones que se actualiza cuando cambia el idioma
   translations = toSignal(
     this.translocoService.selectTranslateObject('navigation').pipe(
-      map(translations => {
+      map((translations) => {
         console.log('Traducciones de navigation actualizadas:', translations);
         return translations;
-      })
+      }),
     ),
-    { initialValue: {} }
+    { initialValue: {} },
   );
 
   // Método para obtener traducciones directamente
@@ -82,18 +82,32 @@ export class HeaderComponent {
       order: 3,
     },
     {
+      id: 'image-lab',
+      label: 'Laboratorio Imágenes',
+      path: '/image-lab',
+      icon: '🖼️',
+      order: 4,
+    },
+    {
+      id: 'asset-optimization',
+      label: 'Optimización Assets',
+      path: '/asset-optimization',
+      icon: '🚀',
+      order: 5,
+    },
+    {
       id: 'contact',
       label: 'Contacto',
       path: '/contact',
       icon: '📧',
-      order: 4,
+      order: 6,
     },
     {
       id: 'settings',
       label: 'Ajustes',
       path: '/settings',
       icon: '⚙️',
-      order: 5,
+      order: 7,
     },
   ];
 

@@ -12,6 +12,12 @@ import {
   withPreloading,
 } from '@angular/router';
 
+import {
+  provideCloudflareLoader,
+  provideCloudinaryLoader,
+  provideImageKitLoader,
+  provideImgixLoader,
+} from '@angular/common';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { provideTransloco } from '@jsverse/transloco';
 import { routes } from './app.routes';
@@ -25,6 +31,12 @@ if (!isDevMode()) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    // CDN Image Loaders para optimización de imágenes
+    provideCloudinaryLoader('https://res.cloudinary.com/demo/image/upload'),
+    provideImgixLoader('https://assets.imgix.net/~image'),
+    provideImageKitLoader('https://ik.imagekit.io/demo'),
+    provideCloudflareLoader('https://imagedelivery.net/'),
+
     // Optimized router configuration
     provideRouter(
       routes,
