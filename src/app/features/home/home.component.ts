@@ -2,12 +2,19 @@ import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppSettingsService } from '../../core/services/app-settings.service';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { HomeFeaturesSectionComponent } from './home-features-section/home-features-section.component';
 
+export interface Feature {
+  title: string;
+  description: string;
+  icon: string;
+  path: string;
+}
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TranslocoPipe],
+  imports: [TranslocoPipe, HomeFeaturesSectionComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -17,7 +24,7 @@ export class HomeComponent {
 
   appConfig = computed(() => this.appSettings.config);
 
-  features = [
+  features: Feature[] = [
     {
       title: 'Lazy Loading',
       description: 'Carga de componentes bajo demanda para reducir el bundle inicial',
@@ -46,5 +53,11 @@ export class HomeComponent {
 
   navigateTo(path: string): void {
     this.router.navigate([path]);
+  }
+
+  reloadFeatures(): void {
+    // Force reload of deferred content by triggering a change detection
+    // In a real app, this could reload data from an API
+    window.location.reload();
   }
 }

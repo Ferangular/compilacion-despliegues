@@ -1,0 +1,16 @@
+<div class="home__features" aria-live="polite">
+  <h2 class="home__features-title">{{ 'home.features.title' | transloco }}</h2>
+  
+  <div class="home__features-grid">
+    @for (feature of features; track feature.title) {
+      <article class="feature-card" tabindex="0" (click)="navigateTo(feature.path)" (keyup.enter)="navigateTo(feature.path)">
+        <div class="feature-card__icon">{{ feature.icon }}</div>
+        <h3 class="feature-card__title">{{ feature.title }}</h3>
+        <p class="feature-card__description">{{ feature.description }}</p>
+        <button class="feature-card__btn">
+          {{ 'common.explore' | transloco }} →
+        </button>
+      </article>
+    }
+  </div>
+</div>

@@ -13,22 +13,42 @@
     </div>
   </div>
 
-  <div class="home__features">
-    <h2 class="home__features-title">{{ 'home.features.title' | transloco }}</h2>
-    
-    <div class="home__features-grid">
-      @for (feature of features; track feature.title) {
-        <article class="feature-card" tabindex="0" (click)="navigateTo(feature.path)" (keyup.enter)="navigateTo(feature.path)">
-          <div class="feature-card__icon">{{ feature.icon }}</div>
-          <h3 class="feature-card__title">{{ feature.title }}</h3>
-          <p class="feature-card__description">{{ feature.description }}</p>
-          <button class="feature-card__btn">
-            {{ 'common.explore' | transloco }} →
-          </button>
-        </article>
-      }
+  @defer (on viewport; prefetch on idle) {
+    <app-home-features-section [features]="features" />
+  } @placeholder (minimum 300ms) {
+    <div class="home__features home__features--placeholder" aria-hidden="true">
+      <h2 class="home__features-title">{{ 'home.features.title' | transloco }}</h2>
+      <div class="home__features-grid">
+        @for (i of [1, 2, 3]; track i) {
+          <div class="feature-card feature-card--skeleton">
+            <div class="feature-card__icon feature-card__icon--skeleton"></div>
+            <div class="feature-card__title feature-card__title--skeleton"></div>
+            <div class="feature-card__description feature-card__description--skeleton"></div>
+            <div class="feature-card__btn feature-card__btn--skeleton"></div>
+          </div>
+        }
+      </div>
     </div>
-  </div>
+  } @loading (minimum 200ms) {
+    <div class="home__features home__features--loading" aria-hidden="true">
+      <h2 class="home__features-title">{{ 'home.features.title' | transloco }}</h2>
+      <div class="home__features-grid">
+        <div class="feature-card feature-card--loading-message">
+          <p class="feature-card__loading-text">{{ 'common.loading' | transloco }}...</p>
+        </div>
+      </div>
+    </div>
+  } @error {
+    <div class="home__features home__features--error">
+      <div class="feature-card feature-card--error">
+        <h3 class="feature-card__title">{{ 'common.error.title' | transloco }}</h3>
+        <p class="feature-card__description">{{ 'common.error.description' | transloco }}</p>
+        <button class="feature-card__btn" (click)="reloadFeatures()">
+          {{ 'common.retry' | transloco }}
+        </button>
+      </div>
+    </div>
+  }
 
   <div class="home__info">
     <div class="info-card">
