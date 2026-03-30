@@ -1,12 +1,16 @@
 import {
   ApplicationConfig,
+  enableProdMode,
   inject,
   isDevMode,
   provideAppInitializer,
-  enableProdMode,
 } from '@angular/core';
-import { provideRouter, withPreloading, withInMemoryScrolling } from '@angular/router';
-import { PreloadAllModules } from '@angular/router';
+import {
+  PreloadAllModules,
+  provideRouter,
+  withInMemoryScrolling,
+  withPreloading,
+} from '@angular/router';
 
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { provideTransloco } from '@jsverse/transloco';
@@ -21,35 +25,31 @@ if (!isDevMode()) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-
     // Optimized router configuration
     provideRouter(
       routes,
       withPreloading(PreloadAllModules),
       withInMemoryScrolling({
         anchorScrolling: 'enabled',
-        scrollPositionRestoration: 'enabled'
-      })
+        scrollPositionRestoration: 'enabled',
+      }),
     ),
 
-    // Optimized HTTP client
-    provideHttpClient(
-      withFetch(),
-      withInterceptorsFromDi()
-    ),
+    // Optimized HTTP client - solo donde se necesite HTTP
+    provideHttpClient(withFetch(), withInterceptorsFromDi()),
 
-    // App initializer for settings
+    // App initializer for settings - mover a feature específica si es posible
     provideAppInitializer(() => {
       const appSettingsService = inject(AppSettingsService);
       return appSettingsService.load();
     }),
 
-    // Optimized Transloco configuration
+    // Optimized Transloco configuration - mover a feature específica
     provideTransloco({
       config: {
         availableLangs: ['en', 'es'],
         defaultLang: 'es',
-        reRenderOnLangChange: !isDevMode(), // Disable for production
+        reRenderOnLangChange: false, // Deshabilitado completamente para performance
         prodMode: !isDevMode(),
         missingHandler: {
           logMissingKey: false,

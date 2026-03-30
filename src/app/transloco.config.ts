@@ -8,15 +8,15 @@ export const translocoConfig: TranslocoConfig = {
   reRenderOnLangChange: true,
   failedRetries: 2,
   flatten: {
-    aot: true
+    aot: true,
   },
   interpolation: ['{{', '}}'],
   scopes: {
-    keepCasing: true
+    keepCasing: true,
   },
   missingHandler: {
     useFallbackTranslation: true,
     logMissingKey: true,
-    allowEmpty: true
-  }
+    allowEmpty: true,
+  },
 };

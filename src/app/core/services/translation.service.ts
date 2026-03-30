@@ -1,26 +1,27 @@
-import { Injectable, signal } from '@angular/core';
-import { TranslocoService, translate } from '@jsverse/transloco';
+import { inject, Injectable, signal } from '@angular/core';
+import { translate, TranslocoService } from '@jsverse/transloco';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TranslationService {
   currentLang = signal('es');
-  
-  constructor(private transloco: TranslocoService) {
+  transloco = inject(TranslocoService);
+
+  constructor() {
     this.currentLang.set(this.transloco.getActiveLang() || 'es');
   }
-  
+
   changeLanguage(lang: string): void {
     this.transloco.setActiveLang(lang);
     this.currentLang.set(lang);
   }
-  
-  getTranslation(key: string, params?: Record<string, any>): string {
+
+  getTranslation(key: string, params?: Record<string, unknown>): string {
     return translate(key, params);
   }
-  
-  instantTranslate(key: string, params?: Record<string, any>): string {
+
+  instantTranslate(key: string, params?: Record<string, unknown>): string {
     return this.transloco.translate(key, params);
   }
 }

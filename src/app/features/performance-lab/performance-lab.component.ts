@@ -1,5 +1,5 @@
-import { Component, signal, computed } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-performance-lab',
