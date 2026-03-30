@@ -21,7 +21,7 @@
                 (click)="navigateTo(item.path)"
                 [class.header__nav-btn--active]="router.url === item.path"
               >
-                <span class="header__nav-icon">{{ item.label }}</span>
+                <span class="header__nav-icon">{{ item.label | transloco }}</span>
               </button>
             </li>
           }
@@ -34,7 +34,7 @@
           class="header__language-select"
           [value]="currentLanguage()"
           (change)="changeLanguage($any($event.target).value)"
-          aria-label="Seleccionar idioma"
+          aria-label="{{ 'header.selectLanguage' | transloco }}"
         >
           @for (lang of availableLanguages; track lang.code) {
             <option [value]="lang.code">

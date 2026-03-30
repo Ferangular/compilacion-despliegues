@@ -1,1 +1,122 @@
-{}
+{
+  "app": {
+    "name": "Angular 21 Performance Lab",
+    "title": "Angular 21 Performance Laboratory"
+  },
+  "navigation": {
+    "home": "Home",
+    "list": "List",
+    "detail": "Detail",
+    "performance": "Laboratory",
+    "settings": "Settings",
+    "contact": "Contact"
+  },
+  "sidebar": {
+    "toggle": "Toggle sidebar",
+    "close": "Close sidebar"
+  },
+  "header": {
+    "toggleSidebar": "Toggle menu",
+    "selectLanguage": "Select language",
+    "environment": {
+      "development": "Development",
+      "staging": "Staging",
+      "production": "Production"
+    }
+  },
+  "footer": {
+    "toggle": "Toggle footer",
+    "show": "Show",
+    "hide": "Hide"
+  },
+  "contact": {
+    "form": {
+      "title": "Contact Form",
+      "name": {
+        "label": "Name",
+        "placeholder": "Your full name",
+        "required": "Name is required",
+        "minLength": "Minimum 3 characters",
+        "maxLength": "Maximum 50 characters"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your@email.com",
+        "required": "Email is required",
+        "invalid": "Invalid email"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Message subject",
+        "required": "Subject is required",
+        "minLength": "Minimum 5 characters",
+        "maxLength": "Maximum 100 characters"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Write your message here...",
+        "required": "Message is required",
+        "minLength": "Minimum 10 characters",
+        "maxLength": "Maximum 500 characters",
+        "characters": "characters"
+      },
+      "priority": {
+        "label": "Priority",
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      },
+      "newsletter": {
+        "label": "Subscribe to newsletter",
+        "description": "Receive news and promotions"
+      },
+      "submit": "Submit Form",
+      "reset": "Clear Form",
+      "success": "Form submitted successfully",
+      "error": "Error submitting form"
+    }
+  },
+  "home": {
+    "title": "Welcome to the Laboratory",
+    "subtitle": "Exploring advanced optimization techniques",
+    "info": {
+      "title": "About this Laboratory",
+      "description": "This application demonstrates advanced production optimization techniques using the latest features of Angular 21. Each section is designed to illustrate specific performance concepts with practical examples."
+    },
+    "features": {
+      "title": "Implemented Features",
+      "standalone": "Standalone Components",
+      "signals": "Reactive Signals",
+      "zoneless": "Zone.js-free Execution",
+      "typescript": "Strict TypeScript",
+      "bem": "BEM CSS Methodology",
+      "lazy": "Lazy Loading Routes"
+    },
+    "tech": {
+      "title": "Technologies Used",
+      "angular": "Angular 21",
+      "standalone": "Standalone",
+      "signals": "Signals",
+      "zoneless": "Zoneless",
+      "typescript": "TypeScript",
+      "scss": "SCSS/BEM"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "refresh": "Refresh"
+  }
+}
