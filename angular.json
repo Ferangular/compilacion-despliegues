@@ -86,14 +86,22 @@
               ]
             },
             "debug-production": {
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "aot": true,
               "outputHashing": "all",
               "extractLicenses": true,
               "sourceMap": {
                 "scripts": true,
-                "styles": true,
-                "vendor": true
+                "styles": false,
+                "vendor": true,
+                "hidden": false
               },
               "fileReplacements": [
                 {
