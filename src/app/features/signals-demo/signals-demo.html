@@ -1,0 +1,53 @@
+<div class="signals-demo">
+  <h2>{{ greeting() }}</h2>
+  <p class="subtitle">Zoneless + Signals + OnPush = O(k) Performance</p>
+
+  <!-- Contador con Signals -->
+  <section class="counter-section">
+    <h3>Counter Demo</h3>
+    <div class="counter-display">
+      <span class="count">{{ count() }}</span>
+      <span class="double-count">Double: {{ doubleCount() }}</span>
+    </div>
+    <div class="counter-controls">
+      <button (click)="decrement()">-</button>
+      <button (click)="reset()">Reset</button>
+      <button (click)="increment()">+</button>
+    </div>
+  </section>
+
+  <!-- Input reactiva -->
+  <section class="input-section">
+    <h3>Reactive Input</h3>
+    <input type="text" [value]="name()" (input)="updateName($any($event.target).value)" placeholder="Enter your name" />
+  </section>
+
+  <!-- Lista reactiva -->
+  <section class="list-section">
+    <h3>Reactive List ({{ itemCount() }} items)</h3>
+    <ul>
+      @for (item of items(); track item; let i = $index) {
+        <li>
+          {{ item }}
+          <button (click)="removeItem(i)" class="remove-btn">×</button>
+        </li>
+      }
+    </ul>
+    <div class="add-item">
+      <input type="text" #newItem placeholder="New item" (keyup.enter)="addItem(newItem.value); newItem.value = ''" />
+      <button (click)="addItem(newItem.value); newItem.value = ''">Add</button>
+    </div>
+  </section>
+
+  <!-- Info de rendimiento -->
+  <section class="performance-info">
+    <h3>Performance Benefits</h3>
+    <ul>
+      <li>✅ Zoneless: Eliminado monkey-patching de APIs asíncronas</li>
+      <li>✅ Signals: O(k) complexity en lugar de O(n)</li>
+      <li>✅ OnPush: Solo re-renderiza cuando las referencias cambian</li>
+      <li>✅ Bundle size: ~33-50KB menos sin Zone.js</li>
+      <li>✅ INP mejorado: Respuesta más rápida a interacciones</li>
+    </ul>
+  </section>
+</div>

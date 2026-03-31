@@ -61,18 +61,32 @@ export class SidebarComponent {
       order: 6,
     },
     {
+      id: 'signals-demo',
+      label: 'Signals Zoneless',
+      path: '/signals-demo',
+      icon: '🔄',
+      order: 7,
+    },
+    {
+      id: 'performance-benchmark',
+      label: 'Performance Benchmark',
+      path: '/performance-benchmark',
+      icon: '📊',
+      order: 8,
+    },
+    {
       id: 'contact',
       label: 'Contacto',
       path: '/contact',
       icon: '📧',
-      order: 7,
+      order: 9,
     },
     {
       id: 'settings',
       label: 'Ajustes',
       path: '/settings',
       icon: '⚙️',
-      order: 8,
+      order: 10,
     },
   ];
 

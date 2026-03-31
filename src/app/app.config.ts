@@ -4,6 +4,7 @@ import {
   inject,
   isDevMode,
   provideAppInitializer,
+  provideZonelessChangeDetection,
 } from '@angular/core';
 import {
   PreloadAllModules,
@@ -32,6 +33,9 @@ if (!isDevMode()) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    // Zoneless Change Detection - O(k) complexity instead of O(n)
+    provideZonelessChangeDetection(),
+
     // CDN Image Loaders para optimización de imágenes
     provideCloudinaryLoader('https://res.cloudinary.com/demo/image/upload'),
     provideImgixLoader('https://assets.imgix.net/~image'),
@@ -70,10 +74,6 @@ export const appConfig: ApplicationConfig = {
         },
       },
       loader: TranslocoHttpLoader,
-    }),
-    provideServiceWorker('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      registrationStrategy: 'registerWhenStable:30000',
     }),
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),

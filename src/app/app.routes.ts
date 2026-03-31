@@ -38,6 +38,19 @@ export const routes: Routes = [
     title: 'Optimización de Assets',
   },
   {
+    path: 'signals-demo',
+    loadComponent: () => import('./features/signals-demo/signals-demo').then((m) => m.SignalsDemo),
+    title: 'Signals Zoneless Demo',
+  },
+  {
+    path: 'performance-benchmark',
+    loadComponent: () =>
+      import('./features/performance-benchmark/performance-benchmark').then(
+        (m) => m.PerformanceBenchmark,
+      ),
+    title: 'Performance Benchmark',
+  },
+  {
     path: 'settings',
     loadComponent: () =>
       import('./features/settings/settings.component').then((m) => m.SettingsComponent),

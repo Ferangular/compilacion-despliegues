@@ -1,0 +1,126 @@
+<div class="performance-benchmark">
+  <h2>🚀 Zoneless Performance Benchmark</h2>
+  <p class="subtitle">Comparativa de rendimiento: O(k) vs O(n) complexity</p>
+
+  <!-- Controles del benchmark -->
+  <section class="controls-section">
+    <h3>Controles del Benchmark</h3>
+    <div class="control-group">
+      <div class="control-item">
+        <label for="itemCount">Número de Items:</label>
+        <input
+          id="itemCount"
+          type="number"
+          [value]="itemCount()"
+          (input)="updateItemCount($any($event.target).valueAsNumber)"
+          min="100"
+          max="10000"
+          step="100"
+        />
+      </div>
+
+      <div class="control-item">
+        <label for="updateInterval">Intervalo (ms):</label>
+        <input
+          id="updateInterval"
+          type="number"
+          [value]="updateInterval()"
+          (input)="updateInterval($any($event.target).valueAsNumber)"
+          min="10"
+          max="1000"
+          step="10"
+        />
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button (click)="startBenchmark()" [disabled]="isRunning()" class="btn btn-start">🚀 Iniciar Benchmark</button>
+      <button (click)="stopBenchmark()" [disabled]="!isRunning()" class="btn btn-stop">⏹️ Detener</button>
+      <button (click)="resetBenchmark()" [disabled]="isRunning()" class="btn btn-reset">🔄 Resetear</button>
+    </div>
+  </section>
+
+  <!-- Estadísticas de rendimiento -->
+  <section class="stats-section">
+    <h3>📊 Estadísticas en Tiempo Real</h3>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">{{ performanceStats().iterations }}</div>
+        <div class="stat-label">Iteraciones</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ performanceStats().totalTime.toFixed(2) }}ms</div>
+        <div class="stat-label">Tiempo Total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ performanceStats().avgTime.toFixed(4) }}ms</div>
+        <div class="stat-label">Tiempo Promedio</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ performanceStats().itemCount }}</div>
+        <div class="stat-label">Items Totales</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visualización de datos -->
+  <section class="visualization-section">
+    <h3>📈 Visualización de Datos ({{ itemCountDisplay() }} items)</h3>
+    <div class="items-container">
+      @for (item of items().slice(0, 50); track item.id) {
+        <div class="data-item" [class.updated]="item.timestamp > Date.now() - 1000">
+          <span class="item-id">{{ item.id }}</span>
+          <span class="item-value">{{ item.value }}</span>
+        </div>
+      }
+      @if (items().length > 50) {
+        <div class="more-items">... y {{ items().length - 50 }} más</div>
+      }
+    </div>
+  </section>
+
+  <!-- Tests adicionales -->
+  <section class="additional-tests">
+    <h3>🧪 Tests Adicionales</h3>
+    <div class="test-buttons">
+      <button (click)="heavyComputation()" class="btn btn-test">💪 Computación Pesada</button>
+      <button (click)="testMultipleSignals()" class="btn btn-test">🔄 Múltiples Signals</button>
+    </div>
+  </section>
+
+  <!-- Información de rendimiento -->
+  <section class="performance-info">
+    <h3>⚡ Beneficios de Zoneless + Signals</h3>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <h4>🎯 O(k) Complexity</h4>
+        <p>Solo se actualizan los bindings que consumen signals modificados, no todo el árbol de componentes.</p>
+      </div>
+      <div class="benefit-card">
+        <h4>📦 Bundle Size -33%</h4>
+        <p>Eliminación de Zone.js reduce el bundle inicial en ~33-50KB.</p>
+      </div>
+      <div class="benefit-card">
+        <h4>⚡ INP Mejorado</h4>
+        <p>Respuesta más rápida a interacciones del usuario sin monkey-patching global.</p>
+      </div>
+      <div class="benefit-card">
+        <h4>🔍 Debugging Facilitado</h4>
+        <p>Stack traces más limpias sin los marcos de ejecución de Zone.js.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estado del benchmark -->
+  @if (isRunning()) {
+    <div class="status-indicator running">
+      <span class="status-dot"></span>
+      Benchmark en ejecución...
+    </div>
+  } @else {
+    <div class="status-indicator stopped">
+      <span class="status-dot"></span>
+      Benchmark detenido
+    </div>
+  }
+</div>
