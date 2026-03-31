@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-performance-benchmark',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './performance-benchmark.html',
   styleUrl: './performance-benchmark.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -161,4 +162,6 @@ export class PerformanceBenchmark {
     const end = performance.now();
     console.log(`Multiple signals test took: ${end - start}ms, final result: ${computed3()}`);
   }
+
+  protected readonly Date = Date;
 }

@@ -21,15 +21,7 @@
 
       <div class="control-item">
         <label for="updateInterval">Intervalo (ms):</label>
-        <input
-          id="updateInterval"
-          type="number"
-          [value]="updateInterval()"
-          (input)="updateInterval($any($event.target).valueAsNumber)"
-          min="10"
-          max="1000"
-          step="10"
-        />
+        <input id="updateInterval" type="number" [(ngModel)]="updateInterval" min="10" max="1000" step="10" />
       </div>
     </div>
 

@@ -1,4 +1,4 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, computed, effect, signal } from '@angular/core';
 
 interface TestImage {
@@ -57,7 +57,7 @@ interface TestResults {
 @Component({
   selector: 'app-asset-optimization',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage],
+  imports: [CommonModule],
   templateUrl: './asset-optimization.html',
   styleUrl: './asset-optimization.css',
 })
