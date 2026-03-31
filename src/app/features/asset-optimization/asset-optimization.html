@@ -47,12 +47,12 @@
               <h4>{{ image.title }}</h4>
 
               <div class="image-container">
+                <!--                [ngSrc]="image.src"        [priority]="image.id === 2" -->
                 <img
-                  [ngSrc]="image.src"
+                  [src]="image.src"
                   [alt]="image.title"
                   [width]="image.width"
                   [height]="image.height"
-                  [priority]="image.id === 2"
                   loading="lazy"
                   class="test-image"
                 />
@@ -92,7 +92,7 @@
 
         <div class="responsive-demo">
           <img
-            src="/assets/images/hero-optimized.webp"
+            src="assets/images/hero-optimized.webp"
             [srcset]="getResponsiveSrcset()"
             sizes="(max-width: 320px) 320px, (max-width: 640px) 640px, (max-width: 800px) 800px, 1200px"
             alt="Imagen responsive"
@@ -118,8 +118,9 @@
 
           <div class="lazy-images">
             @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+              <!--                 [ngSrc]="i % 2 === 0 ? '/assets/images/card-1.webp' : '/assets/images/card-2.webp'"-->
               <img
-                [ngSrc]="i % 2 === 0 ? '/assets/images/card-1.webp' : '/assets/images/card-2.webp'"
+                [src]="i % 2 === 0 ? '/assets/images/card-1.webp' : '/assets/images/card-2.webp'"
                 [alt]="'Lazy image ' + i"
                 [width]="400"
                 [height]="300"

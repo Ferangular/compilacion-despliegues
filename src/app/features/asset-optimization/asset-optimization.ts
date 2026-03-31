@@ -66,7 +66,7 @@ export class AssetOptimization {
     {
       id: 1,
       title: 'Imagen original JPEG',
-      src: '/assets/images/hero-original.jpg',
+      src: 'assets/images/hero-original.jpg',
       width: 1600,
       height: 900,
       format: 'JPEG',
@@ -76,7 +76,7 @@ export class AssetOptimization {
     {
       id: 2,
       title: 'Imagen optimizada WebP',
-      src: '/assets/images/hero-optimized.webp',
+      src: 'assets/images/hero-optimized.webp',
       width: 1600,
       height: 900,
       format: 'WebP',
@@ -86,7 +86,7 @@ export class AssetOptimization {
     {
       id: 3,
       title: 'Tarjeta optimizada WebP',
-      src: '/assets/images/card-1.webp',
+      src: 'assets/images/card-1.webp',
       width: 1200,
       height: 900,
       format: 'WebP',
@@ -96,10 +96,10 @@ export class AssetOptimization {
   ];
 
   readonly responsiveImageSources: ResponsiveImageSource[] = [
-    { width: 320, src: '/assets/images/card-1.webp' },
-    { width: 640, src: '/assets/images/card-1.webp' },
-    { width: 800, src: '/assets/images/hero-optimized.webp' },
-    { width: 1200, src: '/assets/images/hero-optimized.webp' },
+    { width: 320, src: 'assets/images/card-1.webp' },
+    { width: 640, src: 'assets/images/card-1.webp' },
+    { width: 800, src: 'assets/images/hero-optimized.webp' },
+    { width: 1200, src: 'assets/images/hero-optimized.webp' },
   ];
 
   readonly cdnProviders: CdnProvider[] = [
